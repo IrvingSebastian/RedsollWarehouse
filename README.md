@@ -15,9 +15,9 @@
   
 <h2>Tecnologías & IDE's utilizados</h2>
   <ul>
-    <li>OpenJDK 20.0</li>
+    <li>Laravel 8.0</li>
     <li>SQLite 3.41.2</li>
-    <li>Apache NethBeans 17</li>
+    <li>Visual Studio Code</li>
   </ul>
 
 <h2>Equipo Chambeador</h2>
