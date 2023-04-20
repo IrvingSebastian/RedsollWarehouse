@@ -9,7 +9,7 @@
   <ul>
     <li>Registro de productos: permite registrar y clasificar los productos del almacén de Redsoll según su tipo, piezas, cantidad, entre otros.</li>
     <li>Control de inventario: permite llevar un registro actualizado del stock de productos de Redsoll y recibir alertas cuando se está por agotar un producto.</li>
-    <li>Gestión de pedidos: permite gestionar los pedidos de clientes y proveedores de Redsoll, incluyendo la emisión de facturas y la gestión de pagos.</li>
+    <li>Gestión de pedidos: permite gestionar los pedidos de instaladores de Redsoll, incluyendo la emisión de facturas y la gestión de pagos.</li>
     <li>Reportes de ventas: permite generar informes de ventas que ayuden a la empresa a tomar decisiones estratégicas.</li>
   </ul>
   
