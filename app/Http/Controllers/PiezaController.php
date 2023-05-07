@@ -48,7 +48,7 @@ class PiezaController extends Controller
         $pieza = Pieza::create($request->all());
 
         return redirect()->route('piezas.index')
-            ->with('success', 'Pieza created successfully.');
+            ->with('success', 'Los datos han sido creados de manera exitosa.');
     }
 
     /**
@@ -91,7 +91,7 @@ class PiezaController extends Controller
         $pieza->update($request->all());
 
         return redirect()->route('piezas.index')
-            ->with('success', 'Pieza updated successfully');
+            ->with('success', 'Se han actualizado los datos.');
     }
 
     /**
@@ -104,6 +104,6 @@ class PiezaController extends Controller
         $pieza = Pieza::find($id)->delete();
 
         return redirect()->route('piezas.index')
-            ->with('success', 'Pieza deleted successfully');
+            ->with('success', 'La pieza ha sido eliminada de manera exitosa.');
     }
 }

@@ -28,8 +28,8 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-        <button type="reset" class="btn btn-secondary">{{ __('Reset') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Subir datos') }}</button>
+        <button type="reset" class="btn btn-secondary">{{ __('Reiniciar') }}</button>
         <a class="btn btn-primary" href="{{ route('piezas.index') }}">Volver</a>
     </div>
 </div>

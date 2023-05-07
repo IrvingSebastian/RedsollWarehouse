@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Pieza</span>
+                            <span class="card-title">{{ __('Mostrar') }} Pieza</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Atrás') }}</a>
                         </div>
                     </div>
 
