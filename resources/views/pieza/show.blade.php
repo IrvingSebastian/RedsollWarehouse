@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $producto->name ?? "{{ __('Show') Producto" }}
+    {{ $pieza->name ?? "{{ __('Show') Pieza" }}
 @endsection
 
 @section('content')
@@ -11,34 +11,38 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Producto</span>
+                            <span class="card-title">{{ __('Show') }} Pieza</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('productos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
+                            <strong>Id Productos:</strong>
+                            {{ $pieza->id_productos }}
+                        </div>
+                        <div class="form-group">
                             <strong>Codigo:</strong>
-                            {{ $producto->codigo }}
+                            {{ $pieza->codigo }}
                         </div>
                         <div class="form-group">
                             <strong>Descripcion:</strong>
-                            {{ $producto->descripcion }}
+                            {{ $pieza->descripcion }}
                         </div>
                         <div class="form-group">
                             <strong>Entradas:</strong>
-                            {{ $producto->entradas }}
+                            {{ $pieza->entradas }}
                         </div>
                         <div class="form-group">
                             <strong>Salidas:</strong>
-                            {{ $producto->salidas }}
+                            {{ $pieza->salidas }}
                         </div>
                         <div class="form-group">
                             <strong>Stock:</strong>
-                            {{ $producto->stock }}
+                            {{ $pieza->stock }}
                         </div>
 
                     </div>

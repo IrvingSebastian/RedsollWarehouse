@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Producto
+ * Class Pieza
  *
- * @property $id
+ * @property $id_productos
  * @property $codigo
  * @property $descripcion
  * @property $entradas
@@ -21,6 +21,7 @@ class Pieza extends Model
 {
     
     static $rules = [
+		'id_productos' => 'required',
 		'codigo' => 'required',
 		'descripcion' => 'required',
 		'entradas' => 'required',
@@ -35,7 +36,7 @@ class Pieza extends Model
      *
      * @var array
      */
-    protected $fillable = ['codigo','descripcion','entradas','salidas','stock'];
+    protected $fillable = ['id_productos','codigo','descripcion','entradas','salidas','stock'];
 
 
 
