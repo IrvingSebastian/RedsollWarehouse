@@ -1,23 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+<section class="banner_main">
+    <div id="banner1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="carousel-caption">
+                <div class="text-bg">
+                    <h1>{{ __('Panel de Control') }}</h1>
+                    <h2>Redsoll Warehouse</h2>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('template_title')
     Pieza
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('pieza.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -34,9 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
-										<th>Id Productos</th>
+                                        <th>ID Productos</th>
 										<th>Codigo</th>
 										<th>Descripcion</th>
 										<th>Entradas</th>
@@ -50,18 +48,16 @@
                                     @foreach ($piezas as $pieza)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $pieza->id_productos }}</td>
-											<td>{{ $pieza->codigo }}</td>
+        								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
 											<td>{{ $pieza->entradas }}</td>
 											<td>{{ $pieza->salidas }}</td>
 											<td>{{ $pieza->stock }}</td>
 
                                             <td>
-                                                <form action="{{ route('pieza.destroy',$pieza->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('pieza.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('pieza.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -74,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-        
+                {{ $piezas->links('pagination.pagination') }}
             </div>
         </div>
     </div>

@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.w-5, .h-5 {
+    width: 10px;
+    height: 10px;
+}

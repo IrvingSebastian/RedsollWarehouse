@@ -1,11 +1,5 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
-            {{ Form::label('id_productos') }}
-            {{ Form::text('id_productos', $pieza->id_productos, ['class' => 'form-control' . ($errors->has('id_productos') ? ' is-invalid' : ''), 'placeholder' => 'Id Productos']) }}
-            {!! $errors->first('id_productos', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
         <div class="form-group">
             {{ Form::label('codigo') }}
             {{ Form::text('codigo', $pieza->codigo, ['class' => 'form-control' . ($errors->has('codigo') ? ' is-invalid' : ''), 'placeholder' => 'Codigo']) }}
@@ -35,5 +29,7 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="reset" class="btn btn-secondary">{{ __('Reset') }}</button>
+        <a class="btn btn-primary" href="{{ route('piezas.index') }}">Volver</a>
     </div>
 </div>

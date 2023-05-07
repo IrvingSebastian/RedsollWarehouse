@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('template_title')
-    {{ $pieza->name ?? "{{ __('Show') Pieza" }}
+    {{ __('Show') }} Pieza 
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -19,11 +19,6 @@
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Id Productos:</strong>
-                            {{ $pieza->id_productos }}
-                        </div>
                         <div class="form-group">
                             <strong>Codigo:</strong>
                             {{ $pieza->codigo }}
@@ -49,5 +44,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection

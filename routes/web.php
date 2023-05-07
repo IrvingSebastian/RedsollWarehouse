@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'raiz'])->name('raiz');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/index', [HomeController::class, 'index'])->name('index');
 
 Auth::routes();
-Route::resource('pieza', PiezaController::class)->middleware('auth');
+Route::resource('piezas', PiezaController::class)->middleware('auth');
