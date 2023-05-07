@@ -43,15 +43,23 @@
       </div>
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a class="active" href="{{ url('/') }}">Inicio</a>
-        <a href="{{url('piezas')}}">Consultar Piezas</a>
-        @auth
-            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                {{ __('Cerrar Sesión') }}
-            </a>
-        @endauth
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+         <a 
+            @if (Request::is('home'))
+                  class="active"      
+            @endif   
+         href="{{ url('/home') }}">Inicio</a>
+         <a 
+            @if (Request::is('piezas'))
+                  class="active"      
+            @endif         
+            href="{{url('piezas')}}">Consultar Piezas</a>
+         @auth
+               <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Cerrar Sesión') }}
+               </a>
+         @endauth
       </div>
       <!-- header -->
       <header>

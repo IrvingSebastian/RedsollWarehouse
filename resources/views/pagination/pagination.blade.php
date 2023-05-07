@@ -6,6 +6,7 @@
         </span>
         <br>
         <br>
+        <div style="text-align: center;">
         <span class="flex-1 flex justify-between sm:justify-end">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
@@ -49,5 +50,6 @@
                 </span>
                 @endif
         </span>
+        </div>
     </nav>
 @endif

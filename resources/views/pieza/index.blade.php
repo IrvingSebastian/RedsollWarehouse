@@ -71,6 +71,11 @@
                     </div>
                 </div>
                 {{ $piezas->links('pagination.pagination') }}
+                <br>
+                <br>
+                <div style="text-align: right;">
+                    <a class="btn btn-sm btn-primary"  style="font-size: 1.5em;" href="{{route('home')}}"><i class="fa fa-fw fa-print"></i> {{ __('Imprimir') }}</a>
+                </div>
             </div>
         </div>
     </div>
