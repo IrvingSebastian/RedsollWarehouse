@@ -13,15 +13,13 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- bootstrap css -->
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <!-- style css -->
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <!-- Responsive-->
-        <link rel="stylesheet" href="/css/responsive.css">
+        <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
         <!-- fevicon -->
-        <link rel="icon" href="/images/fevicon.png" type="image/gif" />
-        <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+        <link rel="icon" href="{{asset('images/favicon.ico')}}"/>
         <!-- Tweaks for older IEs-->
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -29,9 +27,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link rel="dns-prefetch" href="{{asset('fonts.gstatic.com')}}">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -39,7 +37,7 @@
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="/images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="{{asset('images/loading.gif')}}" alt="#" /></div>
       </div>
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
@@ -49,16 +47,16 @@
                   class="active"      
             @endif   
          href="{{ url('/home') }}">Inicio</a>
-         <a 
-            @if (Request::is('piezas'))
+         @auth
+            <a 
+            @if (Request::is('piezas/*') || Request::is('piezas'))
                   class="active"      
             @endif         
             href="{{url('piezas')}}">Consultar Piezas</a>
-         @auth
-               <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                  {{ __('Cerrar Sesión') }}
-               </a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+               {{ __('Cerrar Sesión') }}
+            </a>
          @endauth
       </div>
       <!-- header -->
@@ -72,7 +70,7 @@
                         <div class="center-desk">
                            <div class="logo">
                             <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="/images/logo.png" alt="#" />
+                                <img src="{{asset('images/logo2.png')}}" alt="#" />
                             </a>
                            </div>
                         </div>
@@ -90,12 +88,11 @@
                         </div>
                         @else
                             <div class="right_bottun">
-                                <a class="login">
-                                    {{ Auth::user()->name }}
+                                <a class="login">                               
+                                    {{ Auth::user()->rol }} - {{ Auth::user()->name }}                                                     
                                 </a>
-
                                  <button class="openbtn" onclick="openNav()">
-                                    <img src="/images/menu_icon.png">
+                                    <img src="{{ asset('images/menu_icon.png') }}">
                                  </button> 
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -162,13 +159,13 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="/js/jquery.min.js"></script>
-      <script src="/js/popper.min.js"></script>
-      <script src="/js/bootstrap.bundle.min.js"></script>
-      <script src="/js/jquery-3.0.0.min.js"></script>
+      <script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/popper.min.js') }}"></script>
+      <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
       <!-- sidebar -->
-      <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="/js/custom.js"></script>
+      <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+      <script src=" {{ asset('js/custom.js') }}"></script>
       <script>
          function openNav() {
            document.getElementById("mySidepanel").style.width = "250px";

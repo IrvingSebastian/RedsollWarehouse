@@ -47,7 +47,7 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
 											<td>{{ $pieza->entradas }}</td>
