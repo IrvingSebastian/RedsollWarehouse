@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PiezaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Auth::routes();
 Route::resource('piezas', PiezaController::class)->middleware('auth');
+
+Route::get('/imprimir', [HomeController::class, 'imprimir'])->name('imprimir');

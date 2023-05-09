@@ -32,8 +32,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function index()
-    {
-        return view('layouts.app2');
+    public function imprimir(){
+        $pdf = \PDF::loadView('pdf');
+        return $pdf->download('primerpdf.pdf');
     }
 }
