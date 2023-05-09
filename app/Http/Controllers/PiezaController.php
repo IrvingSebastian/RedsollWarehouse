@@ -106,4 +106,10 @@ class PiezaController extends Controller
         return redirect()->route('piezas.index')
             ->with('success', 'La pieza ha sido eliminada de manera exitosa.');
     }
+
+    public function imprimir(){
+        $piezas = Pieza::paginate();
+        $pdf = \PDF::loadView('pdf', compact('piezas'));
+        return $pdf->download('primerpdf.pdf');
+    }
 }

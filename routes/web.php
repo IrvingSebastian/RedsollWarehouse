@@ -23,4 +23,4 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 Auth::routes();
 Route::resource('piezas', PiezaController::class)->middleware('auth');
 
-Route::get('/imprimir', [HomeController::class, 'imprimir'])->name('imprimir');
+Route::get('/imprimir', [PiezaController::class, 'imprimir'])->name('imprimir');

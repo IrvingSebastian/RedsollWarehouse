@@ -32,8 +32,5 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function imprimir(){
-        $pdf = \PDF::loadView('pdf');
-        return $pdf->download('primerpdf.pdf');
-    }
+    
 }
