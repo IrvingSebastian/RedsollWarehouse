@@ -109,7 +109,15 @@ class PiezaController extends Controller
 
     public function imprimir(){
         $piezas = Pieza::paginate();
-        $pdf = \PDF::loadView('pdf', compact('piezas'));
+        $pdf = \PDF::loadView('impresion.pdf', compact('piezas'));
         return $pdf->download('primerpdf.pdf');
+    }
+
+    //Función de la vista raiz
+    public function pdf()
+    {
+        $piezas = Pieza::paginate();
+
+        return view('impresion.pdf' , compact('piezas'));
     }
 }

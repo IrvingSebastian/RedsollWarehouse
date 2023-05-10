@@ -19,6 +19,8 @@ use App\Http\Controllers\Controller;
 
 Route::get('/', [HomeController::class, 'raiz'])->name('raiz');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/pdf', [PiezaController::class, 'pdf'])->name('pdf');
+
 
 Auth::routes();
 Route::resource('piezas', PiezaController::class)->middleware('auth');
