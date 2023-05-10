@@ -10,6 +10,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <style>
             /* Estilos personalizados */
+            body{
+                font-family: sans-serif;
+            }
+
             .card-header {
                 background-color: #f0f0f0;
             }
@@ -21,6 +25,16 @@
                 max-width: 50px;
                 overflow: auto;
             }
+
+            table, th, td{
+                border: 1px;
+                border-collapse: collapse;
+            }
+            th, td{
+                padding: 5px;
+            }
+
+
         </style>
     </head>
     
@@ -29,6 +43,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span id="card_title">
                     <img src="{{url('images/logo2.png')}}" alt="#" />
+                    {{ __('Salida de Material Adaptaciones Hidraulicas') }}
                 </span>
             </div>
         </div>
@@ -72,7 +87,6 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span id="card_title">
                     {{ __('Entrego: _______________________') }}
-        <t>
                     {{ __('Recibo: _______________________') }}
                 </span>
             </div>
