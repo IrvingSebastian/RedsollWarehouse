@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PiezaController;
+use App\Http\Controllers\ImpresionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +17,14 @@ use App\Http\Controllers\Controller;
 |
 */
 
+//Rutas comunes
 Route::get('/', [HomeController::class, 'raiz'])->name('raiz');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/pdf', [PiezaController::class, 'pdf'])->name('pdf');
 
-
+//Rutas con inicio de sesión
 Auth::routes();
-Route::resource('piezas', PiezaController::class)->middleware('auth');
 
-Route::get('/imprimir', [PiezaController::class, 'imprimir'])->name('imprimir');
+//Rutas de los registros
+Route::resource('piezas', PiezaController::class)->middleware('auth');
+Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
+Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('imprimir')->middleware('auth');

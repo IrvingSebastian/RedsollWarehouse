@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Pieza
+    Buscar Piezas
 @endsection
 
 @section('content')
@@ -23,10 +23,11 @@
                                 <a href="{{route('imprimir')}}" class="btn btn-sm btn-primary">
                                     <i class="fa fa-fw fa-print"></i> Imprimir 
                                 </a>
-                                <input type="search" class="form-control-sm" placeholder="Buscar" aria-controls="example">            
-                                <a href="{{ route('search', 25) }}" class="btn btn-sm btn-success">
+                                <input id="dato" type="search" class="form-control-sm" placeholder="Buscar" aria-controls="example">            
+                                <a href="{{route('piezas.search', $dato)}}" class="btn btn-sm btn-success">
                                     <i class="fa fa-fw fa-search"></i> Buscar
                                 </a>
+                                <a class="btn btn-primary" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
                                 </form>
                             </div>
                         </div>
@@ -64,11 +65,11 @@
 
                                             <td>
                                                 <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

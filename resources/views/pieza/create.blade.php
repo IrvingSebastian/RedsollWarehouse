@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('template_title')
     {{ __('Create') }} Pieza

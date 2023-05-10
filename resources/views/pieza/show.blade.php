@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('template_title')
     {{ __('Show') }} Pieza 
@@ -14,7 +14,9 @@
                             <span class="card-title">{{ __('Mostrar') }} Pieza</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('piezas.index') }}"> {{ __('Atrás') }}</a>
+                            <a class="btn btn-primary" href="{{ route('piezas.index') }}">
+                                <i class="fa fa-fw fa-arrow-circle-left"></i> Volver
+                            </a>
                         </div>
                     </div>
 

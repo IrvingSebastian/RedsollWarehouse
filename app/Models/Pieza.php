@@ -21,7 +21,6 @@ class Pieza extends Model
 {
     
     static $rules = [
-		'id_productos' => 'required',
 		'codigo' => 'required',
 		'descripcion' => 'required',
 		'entradas' => 'required',
@@ -37,7 +36,4 @@ class Pieza extends Model
      * @var array
      */
     protected $fillable = ['id_productos','codigo','descripcion','entradas','salidas','stock'];
-
-
-
 }

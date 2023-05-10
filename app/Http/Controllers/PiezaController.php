@@ -107,17 +107,16 @@ class PiezaController extends Controller
             ->with('success', 'La pieza ha sido eliminada de manera exitosa.');
     }
 
-    public function imprimir(){
-        $piezas = Pieza::paginate();
-        $pdf = \PDF::loadView('impresion.pdf', compact('piezas'));
-        return $pdf->download('primerpdf.pdf');
-    }
-
-    //Función de la vista raiz
-    public function pdf()
+        /**
+     * Search the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($id)
     {
-        $piezas = Pieza::paginate();
+        $pieza = Pieza::find($id);
 
-        return view('impresion.pdf' , compact('piezas'));
+        return view('pieza.search', compact('pieza'));
     }
 }
