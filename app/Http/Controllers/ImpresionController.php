@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ImpresionController extends Controller
 {
     public function imprimir(Request $request){
-        $seleccionados = ($request->get('seleccionados'));
+        $seleccionados = $request->piezas;
 
         $piezas = Pieza::whereIn('id', $seleccionados)->get();
 

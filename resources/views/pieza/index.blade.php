@@ -37,8 +37,6 @@
                     @endif
                     <div class="card-body">
                         <div class="table-responsive">
-                        <form class="mt-2" action="{{route('imprimir')}}" method="get">
-                            @csrf
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
@@ -56,7 +54,7 @@
                                     @foreach ($piezas as $pieza)
                                         <tr>
                                             <td>
-                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="seleccionados[]">
+                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">
                                             </td>
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
@@ -78,11 +76,10 @@
                                 </tbody>
                             </table>
                             <div style="text-align:right">
-                                <button type="submit" class="btn btn-primary btn-sm" style="font-size:small; text-align:right">
+                                <button name="imprimir" class="btn btn-primary btn-sm" style="font-size:small; text-align:right">
                                     <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
                                 </button>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -90,4 +87,48 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        let selectedItems = [];
+
+        document.querySelectorAll('input[type=checkbox][name=piezas\\[\\]]').forEach(function (el) {
+            el.addEventListener('change', function (e) {
+                let id = e.target.dataset.id;
+
+                if (e.target.checked) {
+                    selectedItems.push(id);
+                } else {
+                    selectedItems = selectedItems.filter(function (item) {
+                        return item !== id;
+                    });
+                }
+            });
+        });
+
+        document.querySelector('button[name=imprimir]').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        let form = document.getElementById('imprimir-form');
+
+        selectedItems.forEach(function (id) {
+            let input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'piezas[]';
+            input.value = id;
+            form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+    });
+    </script>
+@endsection
+
+@section('form_scripts')
+    <form id="imprimir-form" method="GET" action="{{ route('imprimir') }}">
+        @csrf
+        <input type="hidden" name="registros_seleccionados" id="registros_seleccionados">
+    </form>
 @endsection
