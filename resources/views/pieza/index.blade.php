@@ -20,12 +20,9 @@
                                 <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
                                     <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
                                 </a>
-                                <a href="{{route('imprimir')}}" class="btn btn-primary btn-sm" style="font-size: small">
-                                    <i class="fa fa-fw fa-print"></i> Imprimir 
-                                </a>
                                 <form class="mt-2" action="{{route('search')}}" method="get">
                                     @csrf
-                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto">            
+                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small">            
                                     <button type="submit" class="btn btn-success btn-sm" style="font-size: small">
                                         <i class="fa fa-fw fa-search"></i> Buscar
                                     </button>
@@ -38,12 +35,14 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-
                     <div class="card-body">
                         <div class="table-responsive">
+                        <form class="mt-2" action="{{route('imprimir')}}" method="get">
+                            @csrf
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
+                                        <th></th>
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -56,6 +55,9 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>
+                                            <td>
+                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="seleccionados[]">
+                                            </td>
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
@@ -75,6 +77,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div style="text-align:right">
+                                <button type="submit" class="btn btn-primary btn-sm" style="font-size:small; text-align:right">
+                                    <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
+                                </button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -25,16 +25,16 @@
             {{ Form::text('stock', $pieza->stock, ['class' => 'form-control' . ($errors->has('stock') ? ' is-invalid' : ''), 'placeholder' => 'Stock', 'required']) }}
             {!! $errors->first('stock', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
     </div>
+    <br>
     <div class="box-footer mt20">
         @if(Request::is('piezas/create'))
-            <button type="submit" class="btn btn-success"><i class="fa fa-fw  fa-upload"></i>{{ __('Subir datos') }}</button>
-            <button type="reset" class="btn btn-warning"><i class="fa fa-fw fa-refresh"></i></i>{{ __('Reiniciar') }}</button>
+            <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-upload"></i>{{ __('Subir datos') }}</button>
+            <button type="reset" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-refresh"></i></i>{{ __('Reiniciar') }}</button>
         @endif
         @if(Request::is('piezas/*/edit'))
-            <button type="submit" class="btn btn-success" ><i class="fa fa-fw fa-edit"></i> {{ __('Actualizar') }}</button>
+            <button type="submit" class="btn btn-success btn-sm" ><i class="fa fa-fw fa-edit"></i> {{ __('Actualizar') }}</button>
         @endif
-        <a class="btn btn-primary" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
+        <a class="btn btn-primary btn-sm" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
     </div>
 </div>

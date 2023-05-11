@@ -17,15 +17,18 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('piezas.create') }}" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
-                                </a>
-                                <a href="{{route('imprimir')}}" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-fw fa-print"></i> Imprimir 
-                                </a>
+                                <form class="mt-2" action="{{route('imprimir')}}" method="get">
+                                    @csrf
+                                    <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
+                                        <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
+                                    </a>
+                                    <button type="submit" class="btn btn-primary btn-sm" style="font-size: small">
+                                        <i class="fa fa-fw fa-print"></i> Imprimir 
+                                    </button>
+                                </form>
                                 <form class="mt-2" action="{{route('search')}}" method="get">
                                     @csrf
-                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" value="{{$texto}}">            
+                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" value="{{$texto}}" style="font-size: small">            
                                     <button type="submit" class="btn btn-sm btn-success">
                                         <i class="fa fa-fw fa-search"></i> Buscar
                                     </button>

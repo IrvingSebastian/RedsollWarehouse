@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 
 class ImpresionController extends Controller
 {
-    public function imprimir(){
-        $piezas = Pieza::paginate();
+    public function imprimir(Request $request){
+        $seleccionados = ($request->get('seleccionados'));
+
+        $piezas = Pieza::whereIn('id', $seleccionados)->get();
+
         $pdf = \PDF::loadView('impresion.pdf', compact('piezas'));
         return $pdf->download('documento.pdf');
     }
