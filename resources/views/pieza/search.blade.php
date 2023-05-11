@@ -25,7 +25,7 @@
                                 </a>
                                 <form class="mt-2" action="{{route('search')}}" method="get">
                                     @csrf
-                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto">            
+                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" value="{{$texto}}">            
                                     <button type="submit" class="btn btn-sm btn-success">
                                         <i class="fa fa-fw fa-search"></i> Buscar
                                     </button>
