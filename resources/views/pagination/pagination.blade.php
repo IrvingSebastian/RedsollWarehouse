@@ -10,9 +10,7 @@
         <span class="flex-1 flex justify-between sm:justify-end">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 cursor-default rounded-md">
-                    {!! __('pagination.previous') !!}
-                </span>
+
             @else
                 <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 rounded-md">
                     {!! __('pagination.previous') !!}
@@ -30,7 +28,7 @@
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-                            <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white text-black border border-gray-300">{{ $page }}</span>
+                            <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-white-700 bg-black text-white border border-gray-300">{{ $page }}</span>
                         @else
                             <a href="{{ $url }}" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">{{ $page }}</a>
                         @endif
@@ -44,11 +42,8 @@
                     {!! __('pagination.next') !!}
                 </a>
             @else
-                <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 cursor-default rounded-md">
-                    {!! __('pagination.next') !!}
 
-                </span>
-                @endif
+            @endif
         </span>
         </div>
     </nav>
