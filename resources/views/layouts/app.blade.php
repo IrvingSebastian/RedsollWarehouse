@@ -13,7 +13,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- bootstrap css -->
-        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <!-- style css -->
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <!-- Responsive-->
@@ -22,6 +22,7 @@
         <link rel="icon" href="{{asset('images/favicon.ico')}}"/>
         <!-- Tweaks for older IEs-->
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -106,55 +107,39 @@
          </div>
       </header>
       <!-- end header inner -->
-      
-      <!-- Wea 
-      <section class="banner_main">
-        <div id="banner1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="carousel-caption">
-                    <div class="text-bg">
-                        <h1>Redsoll WAREHOUSE</h1>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-      -->
 
-    <main class="py-4">
-        <div id="about" class="about afbecros">
-            @yield('content')
-        </div>
-    </main>
+   <main class="py-4">
+      <div id="about" class="about afbecros">
+         @yield('content')
+      </div>
+   </main>
     
       <!--  footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8 offset-md-2">
-                     <div class="fid_box">
-                        <ul class="location_icon">
-                           <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> 442 810 07 55</li>
-                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> administracion@redsoll.com </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>© 2023 Todos los derechos reservados</p>
-                     </div>
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 offset-md-2">
+                  <div class="fid_box">
+                     <ul class="location_icon">
+                        <li><i class="fa fa-phone" aria-hidden="true"></i><br> 442 810 07 55</li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><br> administracion@redsoll.com </li>
+                     </ul>
                   </div>
                </div>
             </div>
          </div>
-      </footer>
+         <div class="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <p>© 2023 Todos los derechos reservados</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
       <!-- end footer -->
       <!-- Javascript files-->
       <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -166,11 +151,11 @@
       <script src=" {{ asset('js/custom.js') }}"></script>
       <script>
          function openNav() {
-           document.getElementById("mySidepanel").style.width = "250px";
+            document.getElementById("mySidepanel").style.width = "250px";
          }
          
          function closeNav() {
-           document.getElementById("mySidepanel").style.width = "0";
+            document.getElementById("mySidepanel").style.width = "0";
          }
       </script>
    </body>

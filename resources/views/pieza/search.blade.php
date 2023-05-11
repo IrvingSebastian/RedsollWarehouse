@@ -23,11 +23,14 @@
                                 <a href="{{route('imprimir')}}" class="btn btn-sm btn-primary">
                                     <i class="fa fa-fw fa-print"></i> Imprimir 
                                 </a>
-                                <input id="dato" type="search" class="form-control-sm" placeholder="Buscar" aria-controls="example">            
-                                <a href="{{route('piezas.search', $dato)}}" class="btn btn-sm btn-success">
-                                    <i class="fa fa-fw fa-search"></i> Buscar
-                                </a>
-                                <a class="btn btn-primary" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
+                                <form class="mt-2" action="{{route('search')}}" method="get">
+                                    @csrf
+                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto">            
+                                    <button type="submit" class="btn btn-sm btn-success">
+                                        <i class="fa fa-fw fa-search"></i> Buscar
+                                    </button>
+                                </form>
+                                <a class="mt-2 btn btn-sm btn-primary" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
                                 </form>
                             </div>
                         </div>
@@ -43,7 +46,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>ID Productos</th>
+                                        <th>ID Pieza</th>
 										<th>Codigo</th>
 										<th>Descripcion</th>
 										<th>Entradas</th>
@@ -62,7 +65,6 @@
 											<td>{{ $pieza->entradas }}</td>
 											<td>{{ $pieza->salidas }}</td>
 											<td>{{ $pieza->stock }}</td>
-
                                             <td>
                                                 <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>

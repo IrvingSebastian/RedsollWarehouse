@@ -108,7 +108,7 @@ class PiezaController extends Controller
             ->with('success', 'La pieza ha sido eliminada de manera exitosa.');
     }
 
-        /**
+    /**
      * Search the specified resource.
      *
      * @param  int $id
@@ -116,15 +116,12 @@ class PiezaController extends Controller
      */
     public function search(Request $request)
     {
-        $texto=($request->get('texto'));
-        $cliente=DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock')
+        $texto = ($request->get('texto'));
+        $piezas = DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock')
             ->where('descripcion','LIKE','%'.$texto.'%')
-            ->orderBy('descripcion','asc');
+            ->orderBy('descripcion','asc')
+            ->paginate(20);
+         
         return view('pieza.search', compact('piezas','texto'));
-
-        /*
-        $pieza = Pieza::find($id);
-        return view('pieza.search', compact('pieza'));
-        */
     }
 }
