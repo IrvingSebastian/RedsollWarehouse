@@ -137,10 +137,8 @@
                   <div class="col-md-8 offset-md-2">
                      <div class="fid_box">
                         <ul class="location_icon">
-                           <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a><br> Ubicación</li>
-                           <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> Número de teléfono
-                           </li>
-                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> Correo electrónico </li>
+                           <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> 442 810 07 55</li>
+                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> administracion@redsoll.com </li>
                         </ul>
                      </div>
                   </div>
