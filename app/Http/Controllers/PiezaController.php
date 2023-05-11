@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pieza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class PiezaController
@@ -113,10 +114,17 @@ class PiezaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function search($id)
+    public function search(Request $request)
     {
-        $pieza = Pieza::find($id);
+        $texto=($request->get('texto'));
+        $cliente=DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock')
+            ->where('descripcion','LIKE','%'.$texto.'%')
+            ->orderBy('descripcion','asc');
+        return view('pieza.search', compact('piezas','texto'));
 
+        /*
+        $pieza = Pieza::find($id);
         return view('pieza.search', compact('pieza'));
+        */
     }
 }

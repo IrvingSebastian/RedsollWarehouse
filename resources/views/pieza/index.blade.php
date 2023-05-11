@@ -23,7 +23,7 @@
                                 <a href="{{route('imprimir')}}" class="btn btn-sm btn-primary">
                                     <i class="fa fa-fw fa-print"></i> Imprimir 
                                 </a>
-                                <input type="search" class="form-control-sm" placeholder="Buscar" aria-controls="example">            
+                                <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" value= "{{$texto}}" aria-controls="example">            
                                 <a href="{{ route('search', 25) }}" class="btn btn-sm btn-success">
                                     <i class="fa fa-fw fa-search"></i> Buscar
                                 </a>
