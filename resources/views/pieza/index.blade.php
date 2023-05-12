@@ -92,8 +92,15 @@
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
                                 <a href="{{ route('imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
+                                    <i class="fa fa9-fw fa-print"></i> Imprimir seleccionados
                                 </a>
+                                @if (Route::is('selector'))
+                                    @foreach(session('piezas_select') as $piezas1)
+                                        {{ $piezas1 }}
+                                    @endforeach
+                                @else
+
+                                @endif
                             </div>
                         </div>
                     </div>
