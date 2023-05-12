@@ -22,11 +22,20 @@
                                 </a>
                                 <form class="mt-2" action="{{route('search')}}" method="get">
                                     @csrf
-                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small">            
+                                    <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small" 
+                                        @if(isset($texto))
+                                            value="{{$texto}}"
+                                        @endif
+                                    >            
                                     <button type="submit" class="btn btn-success btn-sm" style="font-size: small">
                                         <i class="fa fa-fw fa-search"></i> Buscar
                                     </button>
                                 </form>
+                                @if (Request::is('search'))
+                                    <a href="{{route('piezas.index')}}" class="btn btn-primary btn-sm mt-2" style="font-size: small">
+                                        <i class="fa fa-fw fa-arrow-left"></i> Volver
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -60,15 +69,14 @@
 											<td>{{ $pieza->stock }}</td>
                                             <td>
                                                 <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
-                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                                        <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                                        <i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" style="font-size: small"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
-                                                </form>
-                                                <form action="{{route('cart.store', $pieza->id)}}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-info btn-sm" style="font-size: small"><i class="fa fa-fw fa-print"></i> Imprimir</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                        <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -76,7 +84,7 @@
                                 </tbody>
                             </table>
                             <div style="text-align:right">
-                                <button name="imprimir" class="btn btn-primary btn-sm" style="font-size:small; text-align:right">
+                                <button name="imprimir" class="btn btn-info btn-sm" style="font-size:small; text-align:right">
                                     <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
                                 </button>
                             </div>

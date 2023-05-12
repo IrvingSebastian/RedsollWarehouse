@@ -29,12 +29,16 @@
     <br>
     <div class="box-footer mt20">
         @if(Request::is('piezas/create'))
-            <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-upload"></i>{{ __('Subir datos') }}</button>
-            <button type="reset" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-refresh"></i></i>{{ __('Reiniciar') }}</button>
+            <button type="submit" class="btn btn-success btn-sm" style="font-size: small">
+                <i class="fa fa-fw fa-upload"></i>Subir datos</button>
+            <button type="reset" class="btn btn-warning btn-sm" style="font-size: small">
+                <i class="fa fa-fw fa-refresh"></i></i>Reiniciar</button>
         @endif
         @if(Request::is('piezas/*/edit'))
-            <button type="submit" class="btn btn-success btn-sm" ><i class="fa fa-fw fa-edit"></i> {{ __('Actualizar') }}</button>
+            <button type="submit" class="btn btn-success btn-sm" style="font-size: small">
+                <i class="fa fa-fw fa-edit"></i>Actualizar</button>
         @endif
-        <a class="btn btn-primary btn-sm" href="{{ route('piezas.index') }}"><i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
+        <a class="btn btn-primary btn-sm" href="{{ route('piezas.index') }}" style="font-size: small">
+            <i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
     </div>
 </div>

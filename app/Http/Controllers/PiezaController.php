@@ -122,6 +122,6 @@ class PiezaController extends Controller
             ->orderBy('id','asc')
             ->paginate(20);
          
-        return view('pieza.search', compact('piezas','texto'));
+        return view('pieza.index', compact('piezas','texto'));
     }
 }
