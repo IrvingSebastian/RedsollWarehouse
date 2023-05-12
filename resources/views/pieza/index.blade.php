@@ -40,7 +40,6 @@
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
-                                        <th></th>
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -53,22 +52,23 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>
+                                            <td>{{ $pieza->id }}</td>
+        								    <td>{{ $pieza->codigo }}</td>
+											<td>{{ $pieza->descripcion }}</td>
+											<td>{{ $pieza->entradas }}</td>
+											<td>{{ $pieza->salidas }}</td>
+											<td>{{ $pieza->stock }}</td>
                                             <td>
-                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">
-                                            </td>
-                                            <td name="id">{{ $pieza->id }}</td>
-        								    <td name="codigo">{{ $pieza->codigo }}</td>
-											<td name="descripcion">{{ $pieza->descripcion }}</td>
-											<td name="entradas">{{ $pieza->entradas }}</td>
-											<td name="salidas">{{ $pieza->salidas }}</td>
-											<td name="stock">{{ $pieza->stock }}</td>
-                                            <td>
-                                                <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
+                                                <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" style="font-size: small"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                </form>
+                                                <form action="{{route('cart.store', $pieza->id)}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-info btn-sm" style="font-size: small"><i class="fa fa-fw fa-print"></i> Imprimir</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -87,48 +87,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-        let selectedItems = [];
-
-        document.querySelectorAll('input[type=checkbox][name=piezas\\[\\]]').forEach(function (el) {
-            el.addEventListener('change', function (e) {
-                let id = e.target.dataset.id;
-
-                if (e.target.checked) {
-                    selectedItems.push(id);
-                } else {
-                    selectedItems = selectedItems.filter(function (item) {
-                        return item !== id;
-                    });
-                }
-            });
-        });
-
-        document.querySelector('button[name=imprimir]').addEventListener('click', function (e) {
-        e.preventDefault();
-
-        let form = document.getElementById('imprimir-form');
-
-        selectedItems.forEach(function (id) {
-            let input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'piezas[]';
-            input.value = id;
-            form.appendChild(input);
-        });
-
-        document.body.appendChild(form);
-        form.submit();
-    });
-    </script>
-@endsection
-
-@section('form_scripts')
-    <form id="imprimir-form" method="post" action="{{ route('cart.store') }}">
-        @csrf
-        <input type="hidden" name="registros_seleccionados" id="registros_seleccionados">
-    </form>
 @endsection
