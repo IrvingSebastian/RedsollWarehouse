@@ -27,5 +27,8 @@ Auth::routes();
 //Rutas de los registros
 Route::resource('piezas', PiezaController::class)->middleware('auth');
 Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
+
 Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('imprimir')->middleware('auth');
+Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
+
 

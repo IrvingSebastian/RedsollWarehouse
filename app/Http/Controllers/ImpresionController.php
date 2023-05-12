@@ -7,12 +7,25 @@ use Illuminate\Http\Request;
 
 class ImpresionController extends Controller
 {
-    public function imprimir(Request $request){
-        $seleccionados = $request->piezas;
+    public function selector(Request $request){
+        $seleccionados = $request->input('piezas');
 
-        $piezas = Pieza::whereIn('id', $seleccionados)->get();       
+        session()->push('piezas_seleccionadas', $seleccionados);
 
-        $pdf = \PDF::loadView('impresion.pdf', compact('piezas'));
-        return $pdf->download('documento.pdf');
+        return redirect()->back()
+            ->with('success', 'Los datos fueron agregados de manera exitosa');
+    }
+
+    public function imprimir(){
+        $seleccionados = session('piezas_seleccionadas');
+
+        // Verificar si la variable de sesión "cart" existe
+        if (session()->has('piezas_seleccionadas')) {
+            $piezas = Pieza::whereIn('id', $seleccionados)->get();       
+            $pdf = \PDF::loadView('impresion.pdf', compact('piezas'));
+            return $pdf->download('documento.pdf');
+        } else {
+            return redirect()->back();
+        }    
     }
 }

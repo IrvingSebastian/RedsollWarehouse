@@ -49,6 +49,7 @@
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
+                                        <th></th>
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -61,6 +62,9 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>
+                                            <td>
+                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">                                            
+                                            </td>
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
@@ -84,9 +88,12 @@
                                 </tbody>
                             </table>
                             <div style="text-align:right">
-                                <button name="imprimir" class="btn btn-info btn-sm" style="font-size:small; text-align:right">
-                                    <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
+                                <button name="selector" class="btn btn-primary btn-sm" style="font-size: small">
+                                    <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
+                                <a href="{{ route('imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-print"></i> Imprimir seleccionados
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -95,4 +102,50 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        let selectedItems = [];
+
+        document.querySelectorAll('input[type=checkbox][name=piezas\\[\\]]').forEach(function (el) {
+            el.addEventListener('change', function (e) {
+                let id = e.target.dataset.id;
+
+                if (e.target.checked) {
+                    selectedItems.push(id);
+                } else {
+                    selectedItems = selectedItems.filter(function (item) {
+                        return item !== id;
+                    });
+                }
+            });
+        });
+
+        document.querySelector('button[name=selector]').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let form = document.createElement('form');
+            form.action = '{{ route('selector') }}';
+            form.method = 'POST';
+            form.style.display = 'none';
+
+            let tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = '_token';
+            tokenInput.value = '{{ csrf_token() }}';
+            form.appendChild(tokenInput);
+
+            selectedItems.forEach(function (id) {
+                let input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'piezas[]';
+                input.value = id;
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        });
+    </script>
 @endsection

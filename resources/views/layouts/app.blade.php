@@ -154,7 +154,6 @@
          }
       </script>
       @yield('scripts')
-      @yield('form_scripts')
    </body>
 </html>
 
