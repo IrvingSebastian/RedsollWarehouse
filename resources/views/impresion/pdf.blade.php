@@ -56,7 +56,7 @@
                         <br>
                         {{ Auth::user()->name }}
                     </th>
-                    <th scope="col">Salida de Material Adaptaciones Hidraulicas</th>
+                    <th scope="col">Salida de Material</th>
                     <th scope="col">FO-006<br>REV-00</th>
                 </tr>
             </thead>
