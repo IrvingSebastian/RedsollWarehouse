@@ -18,7 +18,7 @@ class ImpresionController extends Controller
     public function cart()  {
         $cartCollection = \Cart::getContent();
         //dd($cartCollection);
-        return view('cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
+        return view('impresion.selector')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
     }
     public function remove(Request $request){
         \Cart::remove($request->id);
@@ -28,15 +28,13 @@ class ImpresionController extends Controller
     public function add(Request$request){
         \Cart::add(array(
             'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => array(
-                'image' => $request->img,
-                'slug' => $request->slug
-            )
+            'codigo' => $request->codigo,
+            'descripcion' => $request->descripcion,
+            'entrada' => $request->entrada,
+            'salida' => $request->salida,
+            'stock' => $request->stock,
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a sú Carrito!');
+        return redirect()->route('piezas.index')->with('success_msg', 'Item Agregado a sú Carrito!');
     }
 
     public function update(Request $request){

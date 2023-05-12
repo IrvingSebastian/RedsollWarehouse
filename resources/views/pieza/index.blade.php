@@ -56,12 +56,12 @@
                                             <td>
                                                 <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">
                                             </td>
-                                            <td>{{ $pieza->id }}</td>
-        								    <td>{{ $pieza->codigo }}</td>
-											<td>{{ $pieza->descripcion }}</td>
-											<td>{{ $pieza->entradas }}</td>
-											<td>{{ $pieza->salidas }}</td>
-											<td>{{ $pieza->stock }}</td>
+                                            <td name="id">{{ $pieza->id }}</td>
+        								    <td name="codigo">{{ $pieza->codigo }}</td>
+											<td name="descripcion">{{ $pieza->descripcion }}</td>
+											<td name="entradas">{{ $pieza->entradas }}</td>
+											<td name="salidas">{{ $pieza->salidas }}</td>
+											<td name="stock">{{ $pieza->stock }}</td>
                                             <td>
                                                 <form action="{{ route('piezas.destroy',$pieza->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -127,7 +127,7 @@
 @endsection
 
 @section('form_scripts')
-    <form id="imprimir-form" method="GET" action="{{ route('imprimir') }}">
+    <form id="imprimir-form" method="post" action="{{ route('cart.store') }}">
         @csrf
         <input type="hidden" name="registros_seleccionados" id="registros_seleccionados">
     </form>
