@@ -31,5 +31,6 @@ Route::get('/search', [PiezaController::class, 'search'])->name('search')->middl
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
 Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth');
 Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth');
+Route::get('/vizualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('auth');
 
 

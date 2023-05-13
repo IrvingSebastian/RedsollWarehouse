@@ -41,4 +41,18 @@ class ImpresionController extends Controller
             ->with('success', 'No hay piezas seleccionadas');
         }         
     }
+
+    public function visualizar(){
+        if (session()->has('piezas_select')) {
+            foreach (session('piezas_select') as $pieza) {
+                foreach ($pieza as $pieza1) {
+                    $piezas[] = Pieza::find($pieza1);
+                }
+            }
+            return view('imprimir.seleccion', compact('piezas'));  
+        } else {
+            return redirect()->back()
+            ->with('success', 'No hay piezas seleccionadas');
+        } 
+    }
 }

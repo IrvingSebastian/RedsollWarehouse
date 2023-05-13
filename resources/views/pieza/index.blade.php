@@ -94,6 +94,9 @@
                                 <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-trash-o"></i> Borrar selección
                                 </a>
+                                <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-trash-o"></i> Ver selección
+                                </a>
                                 <a href="{{ route('selector.imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-print"></i> Imprimir selección
                                 </a>                             
