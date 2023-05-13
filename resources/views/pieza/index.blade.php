@@ -91,16 +91,12 @@
                                 <button name="selector" class="btn btn-primary btn-sm" style="font-size: small">
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
-                                <a href="{{ route('imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
-                                    <i class="fa fa9-fw fa-print"></i> Imprimir seleccionados
+                                <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-trash-o"></i> Borrar selección
                                 </a>
-                                @if (Route::is('selector'))
-                                    @foreach(session('piezas_select') as $piezas1)
-                                        {{ $piezas1 }}
-                                    @endforeach
-                                @else
-
-                                @endif
+                                <a href="{{ route('selector.imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-print"></i> Imprimir selección
+                                </a>                             
                             </div>
                         </div>
                     </div>
@@ -130,29 +126,33 @@
         });
 
         document.querySelector('button[name=selector]').addEventListener('click', function (e) {
-            e.preventDefault();
+            if (selectedItems.length === 0) {
+                alert('No hay piezas seleccionadas');
+            } 
+            else {
+                e.preventDefault();
+                let form = document.createElement('form');
+                form.action = '{{ route('selector') }}';
+                form.method = 'POST';
+                form.style.display = 'none';
 
-            let form = document.createElement('form');
-            form.action = '{{ route('selector') }}';
-            form.method = 'POST';
-            form.style.display = 'none';
+                let tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = '_token';
+                tokenInput.value = '{{ csrf_token() }}';
+                form.appendChild(tokenInput);
 
-            let tokenInput = document.createElement('input');
-            tokenInput.type = 'hidden';
-            tokenInput.name = '_token';
-            tokenInput.value = '{{ csrf_token() }}';
-            form.appendChild(tokenInput);
+                selectedItems.forEach(function (id) {
+                    let input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'piezas[]';
+                    input.value = id;
+                    form.appendChild(input);
+                });
 
-            selectedItems.forEach(function (id) {
-                let input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'piezas[]';
-                input.value = id;
-                form.appendChild(input);
-            });
-
-            document.body.appendChild(form);
-            form.submit();
+                document.body.appendChild(form);
+                form.submit();
+            } 
         });
     </script>
 @endsection

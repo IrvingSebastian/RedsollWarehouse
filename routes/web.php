@@ -28,7 +28,8 @@ Auth::routes();
 Route::resource('piezas', PiezaController::class)->middleware('auth');
 Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
 
-Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('imprimir')->middleware('auth');
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
+Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth');
+Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth');
 
 
