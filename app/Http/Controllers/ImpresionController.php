@@ -49,7 +49,7 @@ class ImpresionController extends Controller
                     $piezas[] = Pieza::find($pieza1);
                 }
             }
-            return view('imprimir.seleccion', compact('piezas'));  
+            return view('impresion.seleccion', compact('piezas'));  
         } else {
             return redirect()->back()
             ->with('success', 'No hay piezas seleccionadas');

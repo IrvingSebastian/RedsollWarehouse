@@ -92,12 +92,12 @@
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
                                 <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-trash-o"></i> Borrar selección
+                                    <i class="fa fa-fw fa-trash-o"></i> Borrar toda la selección
                                 </a>
-                                <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-trash-o"></i> Ver selección
+                                <a href="{{ route('selector.visualizar') }}" class="btn btn-info btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-eye"></i> Ver selección
                                 </a>
-                                <a href="{{ route('selector.imprimir') }}" class="btn btn-info btn-sm" style="font-size:small">
+                                <a href="{{ route('selector.imprimir') }}" class="btn btn-success btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-print"></i> Imprimir selección
                                 </a>                             
                             </div>

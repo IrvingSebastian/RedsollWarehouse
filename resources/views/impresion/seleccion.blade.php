@@ -15,7 +15,11 @@
                             <span id="card_title">
                                 Pieza
                             </span>
-
+                            <div class="float-right">
+                                <a href="{{route('piezas.index')}}" class="btn btn-primary btn-sm mt-2" style="font-size: small">
+                                    <i class="fa fa-fw fa-arrow-left"></i> Volver
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
@@ -24,7 +28,6 @@
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
-                                        <th></th>
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -37,9 +40,6 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>
-                                            <td>
-                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">
-                                            </td>
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
@@ -50,10 +50,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div style="text-align:right">
+                                <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-trash-o"></i> Borrar toda la selección
+                                </a>
+                                <a href="{{ route('selector.imprimir') }}" class="btn btn-success btn-sm" style="font-size:small">
+                                    <i class="fa fa-fw fa-print"></i> Imprimir selección
+                                </a>                             
+                            </div>
                         </div>
                     </div>
                 </div>
-                {{ $piezas->links('pagination.pagination') }}
             </div>
         </div>
     </div>
@@ -94,11 +101,4 @@
         form.submit();
     });
     </script>
-@endsection
-
-@section('form_scripts')
-    <form id="imprimir-form" method="GET" action="{{ route('imprimir') }}">
-        @csrf
-        <input type="hidden" name="registros_seleccionados" id="registros_seleccionados">
-    </form>
 @endsection

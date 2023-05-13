@@ -51,6 +51,12 @@
                   class="active"      
             @endif         
             href="{{url('piezas')}}">Consultar Piezas</a>
+            <a
+            @if (Request::is('visualizar'))
+                  class="active"
+            @endif
+            href="{{url('visualizar')}}">Visualizar Impresión</a>
+
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
                Cerrar Sesión
