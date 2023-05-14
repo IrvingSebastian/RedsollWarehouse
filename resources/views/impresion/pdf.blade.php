@@ -88,10 +88,11 @@
                     <th scope="col">Entradas</th>
                     <th scope="col">Salidas</th>
                     <th scope="col">Stock</th>
+                    <th scope="col">Cantidad Elegida</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($piezas as $pieza)
+                @foreach ($piezas as $key => $pieza)
                     <tr>
                         <td>{{ $pieza->id }}</td>
                         <td>{{ $pieza->codigo }}</td>
@@ -99,8 +100,9 @@
                         <td>{{ $pieza->entradas }}</td>
                         <td>{{ $pieza->salidas }}</td>
                         <td>{{ $pieza->stock }}</td>
+                        <td>{{ $cantidades[$key] }}</td>
                     </tr>
-                @endforeach
+                @endforeach  
             </tbody>
         </table>
 

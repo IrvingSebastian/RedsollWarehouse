@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pieza;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,9 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $pieza = Pieza::orderBy('id', 'desc')->first();
+
+        return view('home', compact('pieza'));
     }
 
 }

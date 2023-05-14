@@ -63,7 +63,11 @@
                                     @foreach ($piezas as $pieza)
                                         <tr>
                                             <td>
-                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}">                                            
+                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}"
+                                                @if ($pieza->entradas == 0)
+                                                    disabled  
+                                                @endif
+                                                >                                            
                                             </td>
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
@@ -72,6 +76,7 @@
 											<td>{{ $pieza->salidas }}</td>
 											<td>{{ $pieza->stock }}</td>
                                             <td>
+                                                @if (Auth::user()->rol == "Administrador")
                                                 <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -82,13 +87,28 @@
                                                     <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
                                                         <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
                                                 </form>
+                                                    
+                                                @else
+                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                                        <i class="fa fa-fw fa-eye"></i> Mostrar</a>  
+                                                    
+                                                    <br>    
+                                                    <div class="form-outline mt-2" style="font-size: small">
+                                                        <input min="1" max="{{$pieza->entradas}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
+                                                        @if ($pieza->entradas == 0)
+                                                            disabled
+                                                        @endif
+                                                        />
+                                                        <label class="form-label" for="typeNumber">Escriba una cantidad de 1 a {{$pieza->entradas}}</label>
+                                                    </div>
+                                                @endif     
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             <div style="text-align:right">
-                                <button name="selector" class="btn btn-primary btn-sm" style="font-size: small">
+                                <button name="selector" class="btn btn-primary btn-sm" style="font-size: small" onclick="añadirselec()">
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
                                 <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
@@ -96,10 +116,7 @@
                                 </a>
                                 <a href="{{ route('selector.visualizar') }}" class="btn btn-info btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-eye"></i> Ver selección
-                                </a>
-                                <a href="{{ route('selector.imprimir') }}" class="btn btn-success btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-print"></i> Imprimir selección
-                                </a>                             
+                                </a>                            
                             </div>
                         </div>
                     </div>
@@ -111,6 +128,8 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('/js/cantidad.js')}}"></script>
+
     <script>
         let selectedItems = [];
 
@@ -128,12 +147,10 @@
             });
         });
 
-        document.querySelector('button[name=selector]').addEventListener('click', function (e) {
+        function añadirselec() {
             if (selectedItems.length === 0) {
                 alert('No hay piezas seleccionadas');
-            } 
-            else {
-                e.preventDefault();
+            } else {
                 let form = document.createElement('form');
                 form.action = '{{ route('selector') }}';
                 form.method = 'POST';
@@ -155,7 +172,8 @@
 
                 document.body.appendChild(form);
                 form.submit();
-            } 
-        });
+            }
+        }
+
     </script>
 @endsection

@@ -34,20 +34,27 @@
                                         <th>Entradas</th>
                                         <th>Salidas</th>
                                         <th>Stock</th>
-                                        <th></th>
+                                        <th>Cantidad Elegida</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($piezas as $pieza)
+                                    @if (count($piezas) > 0)
+                                    @foreach ($piezas as $key => $pieza)
+                                    <tr>
+                                        <td>{{ $pieza->id }}</td>
+                                        <td>{{ $pieza->codigo }}</td>
+                                        <td>{{ $pieza->descripcion }}</td>
+                                        <td>{{ $pieza->entradas }}</td>
+                                        <td>{{ $pieza->salidas }}</td>
+                                        <td>{{ $pieza->stock }}</td>
+                                        <td>{{ $cantidades[$key] }}</td>
+                                    </tr>
+                                    @endforeach                
+                                    @else
                                         <tr>
-                                            <td>{{ $pieza->id }}</td>
-        								    <td>{{ $pieza->codigo }}</td>
-											<td>{{ $pieza->descripcion }}</td>
-											<td>{{ $pieza->entradas }}</td>
-											<td>{{ $pieza->salidas }}</td>
-											<td>{{ $pieza->stock }}</td>
+                                            <td colspan="7">No hay resultados</td>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                             <div style="text-align:right">
@@ -66,39 +73,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        let selectedItems = [];
-
-        document.querySelectorAll('input[type=checkbox][name=piezas\\[\\]]').forEach(function (el) {
-            el.addEventListener('change', function (e) {
-                let id = e.target.dataset.id;
-
-                if (e.target.checked) {
-                    selectedItems.push(id);
-                } else {
-                    selectedItems = selectedItems.filter(function (item) {
-                        return item !== id;
-                    });
-                }
-            });
-        });
-
-        document.querySelector('button[name=imprimir]').addEventListener('click', function (e) {
-        e.preventDefault();
-
-        let form = document.getElementById('imprimir-form');
-
-        selectedItems.forEach(function (id) {
-            let input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'piezas[]';
-            input.value = id;
-            form.appendChild(input);
-        });
-
-        document.body.appendChild(form);
-        form.submit();
-    });
-    </script>
-@endsection
