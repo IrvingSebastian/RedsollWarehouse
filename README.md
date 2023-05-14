@@ -16,7 +16,8 @@
 <h2>Tecnologías & IDE's utilizados</h2>
   <ul>
     <li>Laravel 8.0</li>
-    <li>SQLite 3.41.2</li>
+    <li>Node JS</li>
+    <li>CSS</li>
     <li>Visual Studio Code</li>
   </ul>
 
