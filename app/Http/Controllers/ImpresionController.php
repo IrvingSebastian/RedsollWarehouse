@@ -34,21 +34,18 @@ class ImpresionController extends Controller
 
     public function imprimir(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
-            
-
             foreach (session('cantidades_select') as $cantidad) {
-                foreach ($cantidad as $cantidad1) {
-
-                    $aux= session('id_pieza');
-                    $pieza = Pieza::where('id', $aux)->first();     
-        
-                        Pieza::where('id', $pieza->id)->decrement('entradas', $cantidad1);
-                        Pieza::where('id', $pieza->id)->increment('salidas', $cantidad1);
-                        //Pieza::where('id', $aux)->decrement('stock', $cantidad1);
+                foreach ($cantidad as $key => $cantidad1) {
+                    $aux = session('piezas_select')[$key];
+                    
+                    Pieza::where('id', $aux)->decrement('entradas', $cantidad1);
+                    Pieza::where('id', $aux)->increment('salidas', $cantidad1);
+                    Pieza::where('id', $aux)->decrement('stock', $cantidad1);
 
                     $cantidades[] = $cantidad1;
                 }
             }
+
             foreach (session('piezas_select') as $pieza) {
                 foreach ($pieza as $pieza1) {
                     $piezas[] = Pieza::find($pieza1);

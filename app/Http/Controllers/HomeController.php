@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $pieza = Pieza::orderBy('id', 'desc')->first();
+        $pieza = Pieza::orderBy('updated_at', 'desc')->first();
 
         return view('home', compact('pieza'));
     }
