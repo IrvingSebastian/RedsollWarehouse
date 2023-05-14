@@ -19,9 +19,11 @@ class ImpresionController extends Controller
     }
 
     public function borrar(){
-        if (session()->has('piezas_select')) {
+        if (session()->has('piezas_select') && session()->has('cantidades_select')) {
+
             session()->forget('piezas_select');
             session()->forget('cantidades_select');
+
             return redirect()->back()
             ->with('success', 'Se borraron las piezas de la selección');
         } else {
@@ -31,7 +33,7 @@ class ImpresionController extends Controller
     }
 
     public function imprimir(){
-        if (session()->has('piezas_select')) {
+        if (session()->has('piezas_select') && session()->has('cantidades_select')) {
             foreach (session('piezas_select') as $pieza) {
                 foreach ($pieza as $pieza1) {
                     $piezas[] = Pieza::find($pieza1);
@@ -59,7 +61,7 @@ class ImpresionController extends Controller
     }
 
     public function visualizar(){
-        if (session()->has('piezas_select')) {
+        if (session()->has('piezas_select') && session()->has('cantidades_select')) {
             foreach (session('piezas_select') as $pieza) {
                 foreach ($pieza as $pieza1) {
                     $piezas[] = Pieza::find($pieza1);

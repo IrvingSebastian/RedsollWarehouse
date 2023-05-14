@@ -139,6 +139,7 @@
 
                 if (e.target.checked) {
                     selectedItems.push(id);
+
                 } else {
                     selectedItems = selectedItems.filter(function (item) {
                         return item !== id;
@@ -150,8 +151,16 @@
         function añadirselec() {
             if (selectedItems.length === 0) {
                 alert('No hay piezas seleccionadas');
-            } else {
-                let form = document.createElement('form');
+            }        
+            else{       
+            selectedItems.forEach(function (id){
+                if(document.getElementById('typeNumber-' + id).value == ""){
+                    alert('No ha introducido ninguna cantidad');
+                    return false;
+                }
+
+                else{
+                    let form = document.createElement('form');
                 form.action = '{{ route('selector') }}';
                 form.method = 'POST';
                 form.style.display = 'none';
@@ -168,12 +177,20 @@
                     input.name = 'piezas[]';
                     input.value = id;
                     form.appendChild(input);
+
+                    let input2 = document.createElement('input');
+                    input2.type = 'hidden';
+                    input2.name = 'cantidades[]';
+                    input2.value = document.getElementById('typeNumber-' + id).value;
+                    form.appendChild(input2);
                 });
 
                 document.body.appendChild(form);
-                form.submit();
+                form.submit();  
+                }
+            })
             }
-        }
+        }                        
 
     </script>
 @endsection
