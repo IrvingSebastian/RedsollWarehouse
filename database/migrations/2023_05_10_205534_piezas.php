@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->text('descripcion');
-            $table->string('entradas');
-            $table->string('salidas');
-            $table->string('stock');
+            $table->bigInteger('entradas');
+            $table->bigInteger('salidas');
+            $table->bigInteger('stock');
             $table->timestamps();
         });
     }
