@@ -91,6 +91,7 @@ class ImpresionController extends Controller
         }         
     }
 
+
     public function visualizar(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
 
