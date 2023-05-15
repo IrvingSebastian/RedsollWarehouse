@@ -24,15 +24,19 @@
             }
             .table_in, .table_in th{
                 background-color: transparent;
-                text-align: left;
                 font-size: medium;
             }
             .line{
-                width: 150px;
+                width: 175px;
                 border-bottom: 1px solid black;
+                align-content: center;
+                text-align: center;
             }
             .line2{
-                width: 150px;
+                width: 100px;
+            }
+            .line3{
+                text-align: left;
             }
             hr{
                 width: 200px;
@@ -50,11 +54,7 @@
             <thead>
                 <tr>
                     <th scope="col">
-                        <img src="{{url('images/logo.png')}}" width="200px" height="75px" alt="logo">
-                        <br>
-                        {{ Auth::user()->rol }}:
-                        <br>
-                        {{ Auth::user()->name }}
+                        <img src="{{url('images/logo.png')}}" width="200px" height="75px" alt="logo">                        
                     </th>
                     <th scope="col">Salida de Material</th>
                     <th scope="col">FO-006<br>REV-00</th>
@@ -68,11 +68,11 @@
         <table class="table_in">
             <thead>
                 <tr>
-                    <th>Jefe de Cuadrilla:</th>
-                    <th class="line"></th>
+                    <th class="line3">Jefe de Cuadrilla: </th>
+                    <th class="line">{{ Auth::user()->name }}</th>
                     <th class="line2"></th>
-                    <th>Fecha:</th>
-                    <th class="line"></th>
+                    <th class="line3">Fecha:</th>
+                    <th class="line">{{$fecha}}</th>
                 </tr>
             </thead>
         </table>
@@ -82,12 +82,9 @@
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col">ID Productos</th>
+                    <th scope="col">ID Pieza</th>
                     <th scope="col">Codigo</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Entradas</th>
-                    <th scope="col">Salidas</th>
-                    <th scope="col">Stock</th>
                     <th scope="col">Cantidad Elegida</th>
                 </tr>
             </thead>
@@ -97,9 +94,6 @@
                         <td>{{ $pieza->id }}</td>
                         <td>{{ $pieza->codigo }}</td>
                         <td>{{ $pieza->descripcion }}</td>
-                        <td>{{ $pieza->entradas }}</td>
-                        <td>{{ $pieza->salidas }}</td>
-                        <td>{{ $pieza->stock }}</td>
                         <td>{{ $cantidades[$key] }}</td>
                     </tr>
                 @endforeach  
@@ -112,8 +106,8 @@
         <table class="table_ut">
             <thead>
                 <tr>
-                    <th><hr>Entrego</th>
-                    <th><hr>Recibio</th>
+                    <th><hr>Entregó</th>
+                    <th><hr>Recibió</th>
                 </tr>
             </thead>
         </table>

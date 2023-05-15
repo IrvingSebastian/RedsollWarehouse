@@ -94,7 +94,7 @@
                                                     
                                                     <br>    
                                                     <div class="form-outline mt-2" style="font-size: small">
-                                                        <input min="1" max="{{$pieza->entradas}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
+                                                        <input min="1" maxlength="3" max="{{$pieza->entradas}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
                                                         @if ($pieza->entradas == 0)
                                                             disabled
                                                         @endif
@@ -112,7 +112,7 @@
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
                                 <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-trash-o"></i> Borrar toda la selección
+                                    <i class="fa fa-fw fa-trash-o"></i> Borrar todo lo seleccionado
                                 </a>
                                 <a href="{{ route('selector.visualizar') }}" class="btn btn-info btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-eye"></i> Ver selección

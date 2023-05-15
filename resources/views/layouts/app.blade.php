@@ -23,15 +23,16 @@
          <!-- Tweaks for older IEs-->
          <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">  
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
          <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
          <!-- Fonts -->
          <link rel="dns-prefetch" href="{{asset('fonts.gstatic.com')}}">
          <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-         <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
     </head>
    <!-- body -->
+
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
@@ -56,6 +57,14 @@
                   class="active"
             @endif
             href="{{url('visualizar')}}">Visualizar Impresión</a>
+
+            @if (Auth::user()->rol == 'Administrador')
+               <a
+               @if (Request::is('register'))
+                     class="active"
+               @endif
+               href="{{route('register')}}">Registrar Usuarios</a>
+            @endif
 
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
@@ -85,9 +94,6 @@
                         <div class="right_bottun">
                             @if (Route::has('login')) 
                                 <a class="login" href="{{ route('login') }}">Iniciar Sesión</a>           
-                            @endif
-                            @if (Route::has('register'))
-                                <a class="login" href="{{ route('register') }}">Registrar</a>
                             @endif
                         </div>
                         @else
@@ -162,4 +168,3 @@
       @yield('scripts')
    </body>
 </html>
-

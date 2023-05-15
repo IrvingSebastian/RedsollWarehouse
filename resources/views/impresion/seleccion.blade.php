@@ -59,7 +59,7 @@
                             </table>
                             <div style="text-align:right">
                                 <a href="{{ route('selector.borrar') }}" class="btn btn-danger btn-sm" style="font-size:small">
-                                    <i class="fa fa-fw fa-trash-o"></i> Borrar toda la selección
+                                    <i class="fa fa-fw fa-trash-o"></i> Borrar todo lo seleccionado
                                 </a>
                                 <a href="{{ route('selector.imprimir') }}" class="btn btn-success btn-sm" style="font-size:small">
                                     <i class="fa fa-fw fa-print"></i> Imprimir selección

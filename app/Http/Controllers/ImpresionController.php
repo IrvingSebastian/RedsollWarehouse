@@ -52,7 +52,9 @@ class ImpresionController extends Controller
                 }
             }
 
-            $pdf = \PDF::loadView('impresion.pdf', compact('piezas', 'cantidades'));
+            $fecha = date('d-m-Y');
+
+            $pdf = \PDF::loadView('impresion.pdf', compact('piezas', 'cantidades', 'fecha'));
             return $pdf->download('documento.pdf');  
         } else {
             return redirect()->back()
