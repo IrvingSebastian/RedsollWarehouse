@@ -69,7 +69,7 @@
                                             @if (Auth::user()->rol == "Instalador")
                                                 <td>
                                                     <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}"
-                                                    @if ($pieza->entradas == 0)
+                                                    @if ($pieza->stock <= 0 || $pieza->entradas <= 0)
                                                         disabled  
                                                     @endif
                                                     >   

@@ -31,8 +31,10 @@ class HomeController extends Controller
     public function home()
     {
         $pieza = Pieza::orderBy('updated_at', 'desc')->first();
+        $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
+        $piezasBajoStock = Pieza::where('stock', '<=', 5)->get();
 
-        return view('home', compact('pieza'));
+        return view('home', compact('pieza', 'piezasAgotadas', 'piezasBajoStock'));
     }
 
 }

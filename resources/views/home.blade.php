@@ -23,6 +23,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        ÚLtima pieza que salió
                         <table class="table table-striped table-hover" style="font-size: small">
                             <thead class="thead">
                                 <tr>
@@ -44,7 +45,6 @@
                                     <td>{{ $pieza->salidas }}</td>
                                     <td>{{ $pieza->stock }}</td>
                                     <td>
-                                        @if (Auth::user()->rol == "Administrador")
                                         <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -54,15 +54,95 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
                                                 <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
-                                        </form>
-                                            
-                                        @else
-                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
-                                                <i class="fa fa-fw fa-eye"></i> Mostrar</a>                                         
-                                            <br>    
-                                        @endif     
+                                        </form>       
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        Piezas agotadas
+                        <table class="table table-striped table-hover" style="font-size: small">
+                            <thead class="thead">
+                                <tr>
+                                    <th>ID Pieza</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Entradas</th>
+                                    <th>Salidas</th>
+                                    <th>Stock</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($piezasAgotadas as $piezaAgotada )
+                                    <tr>
+                                        <td>{{ $piezaAgotada->id }}</td>
+                                        <td>{{ $piezaAgotada->codigo }}</td>
+                                        <td>{{ $piezaAgotada->descripcion }}</td>
+                                        <td>{{ $piezaAgotada->entradas }}</td>
+                                        <td>{{ $piezaAgotada->salidas }}</td>
+                                        <td>{{ $piezaAgotada->stock }}</td>
+                                        <td>
+                                            <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
+                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                                    <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                                    <i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                    <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
+                                            </form>   
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        Piezas por agotarse
+                        <table class="table table-striped table-hover" style="font-size: small">
+                            <thead class="thead">
+                                <tr>
+                                    <th>ID Pieza</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Entradas</th>
+                                    <th>Salidas</th>
+                                    <th>Stock</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($piezasBajoStock as $piezaBajoStock )
+                                    <tr>
+                                        <td>{{ $piezaBajoStock->id }}</td>
+                                        <td>{{ $piezaBajoStock->codigo }}</td>
+                                        <td>{{ $piezaBajoStock->descripcion }}</td>
+                                        <td>{{ $piezaBajoStock->entradas }}</td>
+                                        <td>{{ $piezaBajoStock->salidas }}</td>
+                                        <td>{{ $piezaBajoStock->stock }}</td>
+                                        <td>
+                                            <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
+                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                                    <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                                    <i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                    <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
+                                            </form>   
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
