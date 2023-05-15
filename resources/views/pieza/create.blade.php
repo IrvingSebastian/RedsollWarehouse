@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} Pieza
+    Crear Pieza
 @endsection
 
 @section('content')

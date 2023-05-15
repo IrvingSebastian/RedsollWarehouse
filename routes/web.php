@@ -34,13 +34,13 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('auth', 'admin');
 
 //Rutas de los registros
-Route::resource('piezas', PiezaController::class)->middleware('auth')->except('destroy', 'edit', 'update');
+Route::resource('piezas', PiezaController::class)->middleware('auth', 'instaler');
 Route::resource('piezas', PiezaController::class)->middleware('auth', 'admin');
 Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
 
-Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
-Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth');
-Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth');
-Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('auth');
+Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth', 'instaler');
+Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth', 'instaler');
+Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth', 'instaler');
+Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('auth', 'instaler');
 
 

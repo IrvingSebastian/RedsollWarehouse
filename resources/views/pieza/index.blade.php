@@ -17,9 +17,11 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
-                                    <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
-                                </a>
+                                @if (Auth::user()->rol == "Administrador")
+                                    <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
+                                        <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
+                                    </a>
+                                @endif                            
                                 <form class="mt-2" action="{{route('search')}}" method="get">
                                     @csrf
                                     <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small" 
@@ -49,7 +51,9 @@
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
-                                        <th></th>
+                                        @if (Auth::user()->rol == "Instalador")
+                                            <th></th>
+                                        @endif
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -61,14 +65,16 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($piezas as $pieza)
-                                        <tr>
-                                            <td>
-                                                <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}"
-                                                @if ($pieza->entradas == 0)
-                                                    disabled  
-                                                @endif
-                                                >                                            
-                                            </td>
+                                        <tr>                                   
+                                            @if (Auth::user()->rol == "Instalador")
+                                                <td>
+                                                    <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}"
+                                                    @if ($pieza->entradas == 0)
+                                                        disabled  
+                                                    @endif
+                                                    >   
+                                                </td>
+                                            @endif                                                                                    
                                             <td>{{ $pieza->id }}</td>
         								    <td>{{ $pieza->codigo }}</td>
 											<td>{{ $pieza->descripcion }}</td>
@@ -107,7 +113,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div style="text-align:right">
+                            @if (Auth::user()->rol == "Instalador")
+                            <div style="text-align:right; ">
                                 <button name="selector" class="btn btn-primary btn-sm" style="font-size: small" onclick="añadirselec()">
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados
                                 </button>
@@ -118,6 +125,7 @@
                                     <i class="fa fa-fw fa-eye"></i> Ver selección
                                 </a>                            
                             </div>
+                            @endif                
                         </div>
                     </div>
                 </div>

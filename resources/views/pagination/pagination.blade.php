@@ -6,13 +6,12 @@
         </span>
         <br>
         <br>
-        <div style="text-align: center;">
-        <span class="flex-1 flex justify-between sm:justify-end">
+        <div style="text-align: center; flex: auto;">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
 
             @else
-                <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 rounded-md">
+                <a href="{{ $paginator->previousPageUrl() }}" rel="next" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 rounded-md">
                     {!! __('pagination.previous') !!}
                 </a>
             @endif
@@ -41,10 +40,7 @@
                 <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 rounded-md">
                     {!! __('pagination.next') !!}
                 </a>
-            @else
-
             @endif
-        </span>
         </div>
     </nav>
 @endif

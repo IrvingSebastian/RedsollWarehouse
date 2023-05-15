@@ -52,11 +52,13 @@
                   class="active"      
             @endif         
             href="{{url('piezas')}}">Consultar Piezas</a>
-            <a
-            @if (Request::is('visualizar'))
-                  class="active"
+            @if (Auth::user()->rol == 'Instalador')
+               <a
+               @if (Request::is('visualizar'))
+                     class="active"
+               @endif
+               href="{{url('visualizar')}}">Visualizar Impresión</a>
             @endif
-            href="{{url('visualizar')}}">Visualizar Impresión</a>
 
             @if (Auth::user()->rol == 'Administrador')
                <a
@@ -98,13 +100,12 @@
                         </div>
                         @else
                             <div class="right_bottun">
-                                <a class="login">                               
-                                    {{ Auth::user()->rol }} - {{ Auth::user()->name }}                                                     
-                                </a>
-                                 <button class="openbtn" onclick="openNav()">
-                                    <img src="{{ asset('images/menu_icon.png') }}">
-                                 </button> 
-
+                                 <a class="login">                               
+                                       {{ Auth::user()->rol }} - {{ Auth::user()->name }}                                                     
+                                 </a>
+                                 <a style="cursor: pointer" class="login" onclick="openNav()">
+                                    <img src="{{asset('images/menu_icon.png')}}" alt="#" />
+                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
