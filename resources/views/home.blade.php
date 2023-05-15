@@ -87,10 +87,10 @@
                                         <td>{{ $piezaAgotada->salidas }}</td>
                                         <td>{{ $piezaAgotada->stock }}</td>
                                         <td>
-                                            <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
-                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                            <form action="{{ route('piezas.destroy', $piezaAgotada->id) }}" method="POST">
+                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$piezaAgotada->id) }}">
                                                     <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$piezaAgotada->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Editar</a>
                                                 @csrf
                                                 @method('DELETE')
@@ -130,10 +130,10 @@
                                         <td>{{ $piezaBajoStock->salidas }}</td>
                                         <td>{{ $piezaBajoStock->stock }}</td>
                                         <td>
-                                            <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
-                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                            <form action="{{ route('piezas.destroy', $piezaBajoStock->id) }}" method="POST">
+                                                <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$piezaBajoStock->id) }}">
                                                     <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$piezaBajoStock->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Editar</a>
                                                 @csrf
                                                 @method('DELETE')
