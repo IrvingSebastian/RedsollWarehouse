@@ -16,7 +16,19 @@ class ImpresionController extends Controller
         foreach($cantidades1 as $key => $cantidad){
             if($cantidad <= 0 || $cantidad == null || $cantidad > $piezasAux[$key]->stock){
                 return redirect()->back()
-                ->with('success', 'No se pueden seleccionar cantidades negativas o cero');
+                ->with('success', 
+                'No se pueden seleccionar cantidades negativas, cero o mayores al stock.');
+            }
+            if(session()->has('piezas_select')){
+                foreach (session('piezas_select') as $pieza) {
+                    foreach ($pieza as $pieza1) {
+                        if($pieza1 == $piezas1[$key]){
+                            return redirect()->back()
+                            ->with('success', 
+                            'No se pueden seleccionar cantidades de piezas ya elegidas.');
+                        }
+                    }
+                }
             }
         }
 
