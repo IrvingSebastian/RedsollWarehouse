@@ -40,10 +40,10 @@ class ImpresionController extends Controller
                 }
             }
 
-            foreach ($cantidades as $cant){
-                Pieza::where('id', $cant)->decrement('entradas', $cantidad1);
-                Pieza::where('id', $cant)->increment('salidas', $cantidad1);
-                Pieza::where('id', $cant)->decrement('stock', $cantidad1);
+            foreach ($cantidades as $key => $cantidad1) {
+                Pieza::where('id', $key)->decrement('entradas', $cantidad1);
+                Pieza::where('id', $key)->increment('salidas', $cantidad1);
+                Pieza::where('id', $key)->decrement('stock', $cantidad1);
             }
 
             foreach (session('piezas_select') as $pieza) {
