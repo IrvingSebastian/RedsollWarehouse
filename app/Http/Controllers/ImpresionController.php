@@ -11,6 +11,15 @@ class ImpresionController extends Controller
         $piezas1 = $request->input('piezas');
         $cantidades1 = $request->input('cantidades');
 
+        $piezasAux = Pieza::find($piezas1);
+
+        foreach($cantidades1 as $key => $cantidad){
+            if($cantidad <= 0 || $cantidad == null || $cantidad > $piezasAux[$key]->stock){
+                return redirect()->back()
+                ->with('success', 'No se pueden seleccionar cantidades negativas o cero');
+            }
+        }
+
         session()->push('piezas_select', $piezas1);
         session()->push('cantidades_select', $cantidades1);
     
@@ -32,18 +41,26 @@ class ImpresionController extends Controller
         }         
     }
 
+    
     public function imprimir(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
-            foreach (session('cantidades_select') as $cantidad) {
-                foreach ($cantidad as $cantidad1) {
-                    $cantidades[] = $cantidad1;
-                }
+
+            foreach (session('piezas_select') as $cantidadaux) {
+                foreach ($cantidadaux as $cx){
+                    $cantidadesaux[] = $cx;
+                }             
             }
 
-            foreach ($cantidades as $key => $cantidad1) {
-                Pieza::where('id', $key)->decrement('entradas', $cantidad1);
-                Pieza::where('id', $key)->increment('salidas', $cantidad1);
-                Pieza::where('id', $key)->decrement('stock', $cantidad1);
+            foreach (session('cantidades_select') as $cantidad) {
+                foreach ($cantidad as $key => $cantidad1) {
+                    $aux = $cantidadesaux[$key];
+                    
+                    Pieza::where('id', $aux)->decrement('entradas', $cantidad1);
+                    Pieza::where('id', $aux)->increment('salidas', $cantidad1);
+                    Pieza::where('id', $aux)->decrement('stock', $cantidad1);
+
+                    $cantidades[] = $cantidad1;
+                }
             }
 
             foreach (session('piezas_select') as $pieza) {
@@ -64,6 +81,7 @@ class ImpresionController extends Controller
 
     public function visualizar(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
+
             foreach (session('piezas_select') as $pieza) {
                 foreach ($pieza as $pieza1) {
                     $piezas[] = Pieza::find($pieza1);

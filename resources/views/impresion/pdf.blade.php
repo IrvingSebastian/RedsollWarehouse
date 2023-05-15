@@ -85,6 +85,7 @@
                     <th scope="col">ID Pieza</th>
                     <th scope="col">Codigo</th>
                     <th scope="col">Descripción</th>
+                    <th scope="col">Entradas</th>
                     <th scope="col">Cantidad Elegida</th>
                 </tr>
             </thead>
@@ -94,6 +95,7 @@
                         <td>{{ $pieza->id }}</td>
                         <td>{{ $pieza->codigo }}</td>
                         <td>{{ $pieza->descripcion }}</td>
+                        <td>{{ $pieza->entradas }}</td> 
                         <td>{{ $cantidades[$key] }}</td>
                     </tr>
                 @endforeach  
