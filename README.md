@@ -15,6 +15,8 @@
 <h2>Tecnologías & IDE's utilizados</h2>
   <ul>
     <li>Laravel 8.0</li>
+    <li>PHP 8.1</li>
+    <li>Blade PHP</li>
     <li>Node JS</li>
     <li>CSS</li>
     <li>JavaScript</li>
