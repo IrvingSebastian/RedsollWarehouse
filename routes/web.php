@@ -32,8 +32,7 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('auth', 'admin');
 
 //Rutas de los registros
-Route::resource('piezas', PiezaController::class)->middleware('admin');
-Route::resource('piezas', PiezaController::class)->middleware('instaler')->except(['create', 'store', 'edit', 'update', 'destroy']);
+Route::resource('piezas', PiezaController::class)->middleware('auth');
 Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
 
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('instaler');
