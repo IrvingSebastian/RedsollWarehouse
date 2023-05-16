@@ -1,5 +1,5 @@
 <p align="center">
-<img src="http://redsollwarehouse.redsoll.com/images/logo2.png" width="200" alt="Redsoll Logo">
+<img src="http://redsollwarehouse.redsoll.com/images/logo2.png" width="300" alt="Redsoll Logo">
 
 <h1>Redsoll Warehouse</h1>
 </p>  
