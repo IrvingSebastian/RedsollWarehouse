@@ -10,12 +10,15 @@
     <li>Registro de productos: permite registrar y clasificar los productos del almacén de Redsoll según su tipo, piezas, cantidad, entre otros.</li>
     <li>Control de inventario: permite llevar un registro actualizado del stock de productos de Redsoll y recibir alertas cuando se está por agotar un producto.</li>
     <li>Gestión de pedidos: permite gestionar los pedidos de instaladores de Redsoll, incluyendo la descarga de un archivo en formato PDF para impresión.</li>
+  </ul>
   
 <h2>Tecnologías & IDE's utilizados</h2>
   <ul>
     <li>Laravel 8.0</li>
     <li>Node JS</li>
     <li>CSS</li>
+    <li>JavaScript</li>
+    <li>MySQL</li>
     <li>Visual Studio Code</li>
   </ul>
 
