@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://scontent.fmex19-1.fna.fbcdn.net/v/t39.30808-6/290392509_1572016599861762_7344356692230888568_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=LHT26xl6B70AX9pgHsN&_nc_ht=scontent.fmex19-1.fna&oh=00_AfCv6q8xiZlNkm6FEe2SQQM4_29Affs2yphpgDkEBIUdQQ&oe=6446F757" width="200" alt="Laravel Logo">
+<img src="http://redsollwarehouse.redsoll.com/images/logo2.png" width="200" alt="Redsoll Logo">
 
 <h1>Redsoll Warehouse</h1>
 </p>  
