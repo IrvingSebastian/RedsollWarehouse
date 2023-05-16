@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        ÚLtima pieza que salió
+                        ÚLtimas piezas que entraron
                         <table class="table table-striped table-hover" style="font-size: small">
                             <thead class="thead">
                                 <tr>
@@ -37,18 +37,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($piezas1 != null)
+                                @foreach ($piezas1 as $pieza1 )
                                 <tr>
-                                    <td>{{ $pieza->id }}</td>
-                                    <td>{{ $pieza->codigo }}</td>
-                                    <td>{{ $pieza->descripcion }}</td>
-                                    <td>{{ $pieza->entradas }}</td>
-                                    <td>{{ $pieza->salidas }}</td>
-                                    <td>{{ $pieza->stock }}</td>
+                                    <td>{{ $pieza1->id }}</td>
+                                    <td>{{ $pieza1->codigo }}</td>
+                                    <td>{{ $pieza1->descripcion }}</td>
+                                    <td>{{ $pieza1->entradas }}</td>
+                                    <td>{{ $pieza1->salidas }}</td>
+                                    <td>{{ $pieza1->stock }}</td>
                                     <td>
-                                        <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
-                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                        <form action="{{ route('piezas.destroy', $pieza1->id) }}" method="POST">
+                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza1->id) }}">
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
+                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza1->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Editar</a>
                                             @csrf
                                             @method('DELETE')
@@ -57,6 +59,61 @@
                                         </form>       
                                     </td>
                                 </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="7">No hay piezas</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        ÚLtimas piezas que salieron
+                        <table class="table table-striped table-hover" style="font-size: small">
+                            <thead class="thead">
+                                <tr>
+                                    <th>ID Pieza</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Entradas</th>
+                                    <th>Salidas</th>
+                                    <th>Stock</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($piezas2 != null)
+                                @foreach ($piezas2 as $pieza2 )
+                                <tr>
+                                    <td>{{ $pieza2->id }}</td>
+                                    <td>{{ $pieza2->codigo }}</td>
+                                    <td>{{ $pieza2->descripcion }}</td>
+                                    <td>{{ $pieza2->entradas }}</td>
+                                    <td>{{ $pieza2->salidas }}</td>
+                                    <td>{{ $pieza2->stock }}</td>
+                                    <td>
+                                        <form action="{{ route('piezas.destroy', $pieza2->id) }}" method="POST">
+                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza2->id) }}">
+                                                <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza2->id) }}">
+                                                <i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
+                                        </form>       
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="7">No hay piezas</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

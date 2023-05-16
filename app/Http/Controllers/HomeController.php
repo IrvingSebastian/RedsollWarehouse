@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PiezaNew;
 use App\Models\Pieza;
 
 class HomeController extends Controller
@@ -30,11 +31,17 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $pieza = Pieza::orderBy('updated_at', 'desc')->first();
+        $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
+        $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
+
         $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
         $piezasBajoStock = Pieza::where('stock', '<=', 5)->get();
 
-        return view('home', compact('pieza', 'piezasAgotadas', 'piezasBajoStock'));
+        $piezas1 = Pieza::whereIn('id', $pz1)->get();
+        $piezas2 = Pieza::whereIn('id', $pz2)->get();
+
+        return view('home', compact('piezasAgotadas', 'piezasBajoStock', 'piezas1', 'piezas2'));
     }
+
 
 }

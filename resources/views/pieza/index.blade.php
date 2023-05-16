@@ -100,7 +100,7 @@
                                                     
                                                     <br>    
                                                     <div class="form-outline mt-2" style="font-size: small">
-                                                        <input min="1" maxlength="3" max="{{$pieza->entradas}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
+                                                        <input min="1" max="{{$pieza->stock}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
                                                         @if ($pieza->entradas == 0)
                                                             disabled
                                                         @endif

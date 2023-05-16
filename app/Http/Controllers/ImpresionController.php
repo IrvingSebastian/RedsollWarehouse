@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pieza;
+use App\Models\PiezaNew;
 use Illuminate\Http\Request;
 
 class ImpresionController extends Controller
@@ -53,36 +54,44 @@ class ImpresionController extends Controller
         }         
     }
 
-    
     public function imprimir(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
-
-            foreach (session('piezas_select') as $cantidadaux) {
-                foreach ($cantidadaux as $cx){
-                    $cantidadesaux[] = $cx;
-                }             
-            }
-
-            foreach (session('cantidades_select') as $cantidad) {
-                foreach ($cantidad as $key => $cantidad1) {
-                    $aux = $cantidadesaux[$key];
-                    
-                    Pieza::where('id', $aux)->decrement('entradas', $cantidad1);
-                    Pieza::where('id', $aux)->increment('salidas', $cantidad1);
-                    Pieza::where('id', $aux)->decrement('stock', $cantidad1);
-
-                    $cantidades[] = $cantidad1;
-                }
-            }
-
+        
             foreach (session('piezas_select') as $pieza) {
                 foreach ($pieza as $pieza1) {
                     $piezas[] = Pieza::find($pieza1);
                 }
             }
+            
+            foreach (session('cantidades_select') as $cantidad) {
+                foreach ($cantidad as $cantidad1){
+                    $cantidades[] = $cantidad1;
+                }             
+            }
+
+            $aux = 0;
+
+            foreach ($piezas as $pz) {
+                $cd = $cantidades[$aux]; 
+
+                $pz->stock -= $cd;
+                $pz->entradas -= $cd;
+                $pz->salidas += $cd;
+                $pz->save();
+
+                $piezaNew = new PiezaNew();
+                $piezaNew->pieza_id = $pz->id;
+                $piezaNew->entrada = false;
+                $piezaNew->salida = true;
+                $piezaNew->save();
+
+                $aux++;
+            }
+
+            session()->forget('piezas_select');
+            session()->forget('cantidades_select');
 
             $fecha = date('d-m-Y');
-
             $pdf = \PDF::loadView('impresion.pdf', compact('piezas', 'cantidades', 'fecha'));
             return $pdf->download('documento.pdf');  
         } else {
@@ -90,7 +99,6 @@ class ImpresionController extends Controller
             ->with('success', 'No hay piezas seleccionadas');
         }         
     }
-
 
     public function visualizar(){
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {

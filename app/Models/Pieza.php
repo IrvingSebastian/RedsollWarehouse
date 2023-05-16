@@ -35,5 +35,5 @@ class Pieza extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_productos','codigo','descripcion','entradas','salidas','stock'];
+    protected $fillable = ['codigo','descripcion','entradas','salidas','stock'];
 }

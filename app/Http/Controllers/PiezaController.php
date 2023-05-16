@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pieza;
+use App\Models\PiezaNew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -91,6 +92,12 @@ class PiezaController extends Controller
 
         $pieza->update($request->all());
 
+        $piezaNew = new PiezaNew();
+        $piezaNew->pieza_id = $pieza->id;
+        $piezaNew->entrada = true;
+        $piezaNew->salida = false;
+        $piezaNew->save();
+
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos.');
     }
@@ -120,7 +127,7 @@ class PiezaController extends Controller
         $piezas = DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock')
             ->where('descripcion','LIKE','%'.$texto.'%')
             ->orderBy('id','asc')
-            ->paginate(20);
+            ->paginate(50);
          
         return view('pieza.index', compact('piezas','texto'));
     }
