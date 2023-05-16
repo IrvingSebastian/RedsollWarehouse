@@ -20,6 +20,7 @@
     <li>JavaScript</li>
     <li>MySQL</li>
     <li>Visual Studio Code</li>
+    <li>PHPMyAdmin</li>
   </ul>
 
 <h2>Equipo Chambeador</h2>
