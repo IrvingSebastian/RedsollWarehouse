@@ -25,7 +25,7 @@
     <li>PHPMyAdmin</li>
   </ul>
 
-<h2>Equipo Chambeador</h2>
+<h2>Equipo de Trabajo</h2>
   <ul>
     <li><a href="https://github.com/armandolopezg" target="_blank">Neo Magatsu</li></a>
     <li><a href="https://github.com/FernandoHG07" target="_blank">Neo ByTheAndrew</li></a>
