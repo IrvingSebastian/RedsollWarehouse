@@ -35,6 +35,7 @@
                                             <th>Entradas</th>
                                             <th>Salidas</th>
                                             <th>Stock</th>
+                                            <th>Fecha de Creación</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -46,6 +47,7 @@
                                             <td>{{$admin->piezas->entradas}}</td>
                                             <td>{{$admin->piezas->salidas}}</td>
                                             <td>{{$admin->piezas->stock}}</td>
+                                            <td>{{$admin->piezas->created_at}}</td>
                                             <td>
                                                 <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">

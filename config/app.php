@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'AMERICA/MEXICO_CITY',
+    'timezone' => 'America/Chihuahua',
 
     /*
     |--------------------------------------------------------------------------
