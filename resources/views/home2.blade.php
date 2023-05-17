@@ -22,11 +22,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 Administradores
-                @php
-                    $prevAdmin = null;
-                @endphp
                 @foreach ($admins as $admin)
-                    @if ($prevAdmin !== $admin->users->name)
                         <div class="card">
                             <div class="card-header">
                                 {{$admin->users->name}}
@@ -63,44 +59,15 @@
                                                 </form>       
                                             </td>
                                         </tr>
-                                            @else
-                                        <tr>
-                                            <td>{{$admin->piezas->id}}</td>
-                                            <td>{{$admin->piezas->codigo}}</td>
-                                            <td>{{$admin->piezas->descripcion}}</td>
-                                            <td>{{$admin->piezas->entradas}}</td>
-                                            <td>{{$admin->piezas->salidas}}</td>
-                                            <td>{{$admin->piezas->stock}}</td>
-                                            <td>
-                                                <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
-                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
-                                                        <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$admin->piezas->id) }}">
-                                                        <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
-                                                        <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
-                                                </form>       
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <br>
-                    @endif
-                    @php
-                        $prevAdmin = $admin->users->name;
-                    @endphp
                 @endforeach
 
                 Instaladores
-                @php
-                    $prevInstall = null;
-                @endphp
                 @foreach ($instalers as $instaler)
-                    @if ($prevInstall !== $instaler->users->name)
                     <div class="card">
                         <div class="card-header">
                             {{$instaler->users->name}}
@@ -142,10 +109,6 @@
                         </div>
                     </div>
                     <br>
-                    @endif
-                    @php
-                        $prevInstall = $instaler->users->name;
-                    @endphp
                 @endforeach
             </div>
         </div>
