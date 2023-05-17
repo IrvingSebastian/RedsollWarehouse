@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        ÚLtimas piezas que entraron
+                        Últimas piezas que entraron
                         <table class="table table-striped table-hover" style="font-size: small">
                             <thead class="thead">
                                 <tr>
@@ -72,7 +72,7 @@
                 <br>
                 <div class="card">
                     <div class="card-header">
-                        ÚLtimas piezas que salieron
+                        Últimas piezas que salieron
                         <table class="table table-striped table-hover" style="font-size: small">
                             <thead class="thead">
                                 <tr>

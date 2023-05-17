@@ -31,6 +31,7 @@
                                 <div class="col-md-6">
                                     <select class="form-select" aria-label="Default select example" name="rol" id="rol">
                                         <option selected disabled>Elige un rol:</option>
+                                        <option value="Jefe de Almacen">Jefe de Almacen</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Instalador">Instalador</option>
                                     </select>

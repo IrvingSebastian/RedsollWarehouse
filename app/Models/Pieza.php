@@ -36,4 +36,9 @@ class Pieza extends Model
      * @var array
      */
     protected $fillable = ['codigo','descripcion','entradas','salidas','stock'];
+
+    public function piezaNews()
+    {
+      return $this->hasMany(PiezaNew::class, 'pieza_id', 'id');
+    }
 }

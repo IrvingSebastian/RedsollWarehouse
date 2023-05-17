@@ -15,10 +15,10 @@ class BossMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && $request->user()->rol === 'Jefe de almacen') {
+        if ($request->user() && $request->user()->rol === 'Jefe de Almacen') {
             return $next($request);
         }
 
-        return redirect()->route('home2');
+        return redirect()->route('home');
     }
 }

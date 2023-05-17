@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PiezaNew;
 use App\Models\Pieza;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,12 @@ class HomeController extends Controller
     //Función de la vista raiz
     public function raiz()
     {
-        return redirect()->route('home');
+        if (auth()->user()->rol == 'Administrador' || auth()->user()->rol == 'Instalador') {
+            return redirect()->route('home');
+        }
+        else if (auth()->user()->rol == 'Jefe de Almacen') {
+            return redirect()->route('home2');
+        }
     }
 
     /**
@@ -32,30 +38,34 @@ class HomeController extends Controller
     public function home()
     {
         $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
+
         $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
 
         $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
-        $piezasBajoStock = Pieza::where('stock', '<=', 5)->get();
+        $piezasBajoStock = Pieza::where('stock', '<=', 5)
+            ->where('stock', '>', 0)
+            ->get();
 
         $piezas1 = Pieza::whereIn('id', $pz1)->get();
         $piezas2 = Pieza::whereIn('id', $pz2)->get();
 
         return view('home', compact('piezasAgotadas', 'piezasBajoStock', 'piezas1', 'piezas2'));
-    
     }
 
     public function home2()
     {
-    $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
-    $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
+        $ad = PiezaNew::where('entrada', 1)
+            ->pluck('user_id')
+            ->unique();
 
-    $piezaIds = PiezaNew::whereIn('user_id', $pz1)->pluck('pieza_id')->toArray();
-    $piezaIds = PiezaNew::whereIn('user_id', $pz2)->pluck('pieza_id')->toArray();
+        $inst = PiezaNew::where('salida', 1)
+            ->pluck('user_id')
+            ->unique(); 
 
-    $piezas1 = Pieza::whereIn('id', $pz1)->latest()->get();
-    $piezas2 = Pieza::whereIn('id', $pz2)->latest()->get();
+        $admins = PiezaNew::whereIn('user_id', $ad)->get();
 
+        $instalers = PiezaNew::whereIn('user_id', $inst)->get();
+
+        return view('home2', compact('admins', 'instalers'));
     }
-       
-
 }

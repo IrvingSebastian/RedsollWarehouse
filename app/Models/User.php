@@ -42,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function piezaNews()
+    {
+        return $this->hasMany(PiezaNew::class, 'user_id', 'id');
+    }
 }

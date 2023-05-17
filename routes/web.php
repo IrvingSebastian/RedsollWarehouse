@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 //Rutas comunes
 Route::get('/', [HomeController::class, 'raiz'])->name('raiz');
-Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/home2', [HomeController::class, 'home2'])->name('home2');
+Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/home2', [HomeController::class, 'home2'])->name('home2')->middleware('boss');
 
 //Rutas con inicio de sesión
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -29,8 +29,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Rutas de registro
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('auth', 'admin');
-Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('auth', 'admin');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('boss');
+Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('boss');
 
 //Rutas de los registros
 Route::resource('piezas', PiezaController::class)->middleware('auth');
