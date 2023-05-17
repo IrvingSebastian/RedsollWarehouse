@@ -122,6 +122,7 @@ class ImpresionController extends Controller
 
                 $piezaNew = new PiezaNew();
                 $piezaNew->pieza_id = $pz->id;
+                $piezaNew->user_id = auth()->user()->id;
                 $piezaNew->entrada = false;
                 $piezaNew->salida = true;
                 $piezaNew->save();
