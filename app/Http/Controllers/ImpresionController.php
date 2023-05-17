@@ -54,24 +54,28 @@ class ImpresionController extends Controller
         }         
     }
 
-    public function borrar1($id){
+    public function borrar1($id)
+    {
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
-            
-            foreach (session('piezas_select') as $pieza) {
-                foreach ($pieza as $pieza1) {
+            $piezas = session('piezas_select');
+            $cantidades = session('cantidades_select');
 
-                    if ($pieza1 == $id) {
-                        unset(session('piezas_select')[$pieza1]);
-                        unset(session('cantidades_select')[$pieza1]);
-                    }
+            $aux = 0;
+            foreach ($piezas as $key => $pieza) {
+                if ($pieza == $id) {
+                    unset($piezas[$key]);
+                    unset($cantidades[$key]);
+                    break;
                 }
-            }            
+                $aux++;
+            }
 
-            return redirect()->back()
-            ->with('success', 'Se borró la pieza de la selección.');
+            session(['piezas_select' => $piezas]);
+            session(['cantidades_select' => $cantidades]);
+
+            return redirect()->back()->with('success', 'Se borró la pieza ' . $id . ' de la selección.');
         } else {
-            return redirect()->back()
-            ->with('success', 'No hay piezas seleccionadas.');
+            return redirect()->back()->with('success', 'No hay piezas seleccionadas.');
         }
     }
 
