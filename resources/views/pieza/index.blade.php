@@ -95,17 +95,17 @@
                                                 </form>
                                                     
                                                 @else
-                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
+                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->stock) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>  
                                                     
                                                     <br>    
                                                     <div class="form-outline mt-2" style="font-size: small">
-                                                        <input min="1" max="{{$pieza->stock}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
-                                                        @if ($pieza->entradas == 0)
+                                                        <input min="1" max="{{$pieza->stock}}" type="number" id="typeNumber-{{ $pieza->stock }}" class="form-control" disabled
+                                                        @if ($pieza->stock == 0)
                                                             disabled
                                                         @endif
                                                         />
-                                                        <label class="form-label" for="typeNumber">Escriba una cantidad de 1 a {{$pieza->entradas}}</label>
+                                                        <label class="form-label" for="typeNumber">En stock {{$pieza->stock}}</label>
                                                     </div>
                                                 @endif     
                                             </td>
