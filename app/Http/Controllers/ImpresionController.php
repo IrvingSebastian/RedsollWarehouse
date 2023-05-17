@@ -37,7 +37,7 @@ class ImpresionController extends Controller
         session()->push('cantidades_select', $cantidades1);
     
         return redirect()->back()
-            ->with('success', 'Se añadieron las piezas a la selección');
+            ->with('success', 'Se añadieron las piezas a la selección.');
     }
 
     public function borrar(){
@@ -47,11 +47,32 @@ class ImpresionController extends Controller
             session()->forget('cantidades_select');
 
             return redirect()->back()
-            ->with('success', 'Se borraron las piezas de la selección');
+            ->with('success', 'Se borraron las piezas de la selección.');
         } else {
             return redirect()->back()
-            ->with('success', 'No hay piezas seleccionadas');
+            ->with('success', 'No hay piezas seleccionadas.');
         }         
+    }
+
+    public function borrar1($id){
+        if (session()->has('piezas_select') && session()->has('cantidades_select')) {
+            
+            foreach (session('piezas_select') as $pieza) {
+                foreach ($pieza as $pieza1) {
+
+                    if ($pieza1 == $id) {
+                        unset(session('piezas_select')[$pieza1]);
+                        unset(session('cantidades_select')[$pieza1]);
+                    }
+                }
+            }            
+
+            return redirect()->back()
+            ->with('success', 'Se borró la pieza de la selección.');
+        } else {
+            return redirect()->back()
+            ->with('success', 'No hay piezas seleccionadas.');
+        }
     }
 
     public function imprimir(){
@@ -75,7 +96,6 @@ class ImpresionController extends Controller
                 $cd = $cantidades[$aux]; 
 
                 $pz->stock -= $cd;
-                $pz->entradas -= $cd;
                 $pz->salidas += $cd;
                 $pz->save();
 
@@ -96,7 +116,7 @@ class ImpresionController extends Controller
             return $pdf->download('documento.pdf');  
         } else {
             return redirect()->back()
-            ->with('success', 'No hay piezas seleccionadas');
+            ->with('success', 'No hay piezas seleccionadas.');
         }         
     }
 
@@ -119,7 +139,7 @@ class ImpresionController extends Controller
             $piezas = [];
 
             return view('impresion.seleccion', compact('piezas'))
-                ->with('success', 'No hay piezas seleccionadas');
+                ->with('success', 'No hay piezas seleccionadas.');
         } 
     }
 }

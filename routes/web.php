@@ -38,6 +38,7 @@ Route::get('/search', [PiezaController::class, 'search'])->name('search')->middl
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('instaler');
 Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('instaler');
 Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('instaler');
+Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('selector.borrar1')->middleware('instaler');
 Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('instaler');
 
 

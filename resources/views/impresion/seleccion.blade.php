@@ -22,7 +22,11 @@
                             </div>
                         </div>
                     </div>
-                    
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert" style="font-size: small">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover" style="font-size: small">
@@ -35,6 +39,7 @@
                                         <th>Salidas</th>
                                         <th>Stock</th>
                                         <th>Cantidad Elegida</th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +53,10 @@
                                         <td>{{ $pieza->salidas }}</td>
                                         <td>{{ $pieza->stock }}</td>
                                         <td>{{ $cantidades[$key] }}</td>
+                                        <td> 
+                                            <a href="{{route('selector.borrar1', $pieza->id)}}" class="btn btn-danger btn-sm" style="font-size: small">
+                                                <i class="fa fa-fw fa-trash-o"></i> Eliminar</a>
+                                        </td>
                                     </tr>
                                     @endforeach                
                                     @else
