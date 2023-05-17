@@ -41,20 +41,20 @@
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-         @if (Auth::user()->rol == "Jefe de Almacen")
-            <a 
-               @if (Request::is('home2'))
-                     class="active"      
-               @endif   
-                  href="{{ url('/home2') }}">Inicio</a>
-         @else
-            <a 
-               @if (Request::is('home'))
-                     class="active"      
-               @endif   
-                  href="{{ url('/home') }}">Inicio</a>
-         @endif
          @auth
+            @if (Auth::user()->rol == "Jefe de Almacen")
+               <a 
+                  @if (Request::is('home2'))
+                        class="active"      
+                  @endif   
+                     href="{{ url('/home2') }}">Inicio</a>
+            @else
+               <a 
+                  @if (Request::is('home'))
+                        class="active"      
+                  @endif   
+                     href="{{ url('/home') }}">Inicio</a>
+            @endif
             <a 
             @if (Request::is('piezas/*') || Request::is('piezas'))
                   class="active"      
