@@ -35,7 +35,7 @@
                                             <th>Entradas</th>
                                             <th>Salidas</th>
                                             <th>Stock</th>
-                                            <th>Fecha de Creación</th>
+                                            <th>Fecha de Modificación</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                             <td>{{$admin->piezas->entradas}}</td>
                                             <td>{{$admin->piezas->salidas}}</td>
                                             <td>{{$admin->piezas->stock}}</td>
-                                            <td>{{$admin->piezas->created_at}}</td>
+                                            <td>{{$admin->piezas->updated_at}}</td>
                                             <td>
                                                 <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
@@ -78,7 +78,7 @@
                                         <th>Entradas</th>
                                         <th>Salidas</th>
                                         <th>Stock</th>
-                                        <th>Fecha de Creación</th>
+                                        <th>Fecha de Actualización</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -90,7 +90,7 @@
                                         <td>{{$instaler->piezas->entradas}}</td>
                                         <td>{{$instaler->piezas->salidas}}</td>
                                         <td>{{$instaler->piezas->stock}}</td>
-                                        <td>{{$instaler->piezas->created_at}}</td>
+                                        <td>{{$instaler->piezas->updated_at}}</td>
                                         <td>
                                             <form action="{{ route('piezas.destroy', $instaler->piezas->id) }}" method="POST">
                                                 <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$instaler->piezas->id) }}">
