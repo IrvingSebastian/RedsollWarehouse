@@ -85,8 +85,10 @@ class ImpresionController extends Controller
             session()->forget('piezas_select');
             session()->forget('cantidades_select');
 
-            session()->push('piezas_select', $piezas);
-            session()->push('cantidades_select', $cantidades);
+            if (count($piezas) > 0) {
+                session()->push('piezas_select', $piezas);
+                session()->push('cantidades_select', $cantidades);
+            }
 
             return redirect()->back()->with('success', 'Se borró la pieza ' . $pro . ' de la selección.');
         } else {
