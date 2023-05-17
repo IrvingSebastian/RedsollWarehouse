@@ -41,18 +41,21 @@ class HomeController extends Controller
         $piezas2 = Pieza::whereIn('id', $pz2)->get();
 
         return view('home', compact('piezasAgotadas', 'piezasBajoStock', 'piezas1', 'piezas2'));
+    
     }
-    public function home2(){
-        
-        $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
-        $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
 
-        $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
-        $piezasBajoStock = Pieza::where('stock', '<=', 5)->get();
+    public function home2()
+    {
+    $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
+    $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
 
-        $piezas1 = Pieza::whereIn('id', $pz1)->get();
-        $piezas2 = Pieza::whereIn('id', $pz2)->get();
+    $piezaIds = PiezaNew::whereIn('user_id', $pz1)->pluck('pieza_id')->toArray();
+    $piezaIds = PiezaNew::whereIn('user_id', $pz2)->pluck('pieza_id')->toArray();
+
+    $piezas1 = Pieza::whereIn('id', $pz1)->latest()->get();
+    $piezas2 = Pieza::whereIn('id', $pz2)->latest()->get();
 
     }
+       
 
 }
