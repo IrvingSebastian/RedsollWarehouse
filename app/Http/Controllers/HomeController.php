@@ -42,6 +42,17 @@ class HomeController extends Controller
 
         return view('home', compact('piezasAgotadas', 'piezasBajoStock', 'piezas1', 'piezas2'));
     }
+    public function home2(){
+        
+        $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
+        $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
 
+        $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
+        $piezasBajoStock = Pieza::where('stock', '<=', 5)->get();
+
+        $piezas1 = Pieza::whereIn('id', $pz1)->get();
+        $piezas2 = Pieza::whereIn('id', $pz2)->get();
+
+    }
 
 }

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 //Rutas comunes
 Route::get('/', [HomeController::class, 'raiz'])->name('raiz');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/home2', [HomeController::class, 'home2'])->name('home2');
 
 //Rutas con inicio de sesión
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

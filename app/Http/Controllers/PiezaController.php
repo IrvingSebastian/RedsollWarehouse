@@ -48,7 +48,12 @@ class PiezaController extends Controller
         request()->validate(Pieza::$rules);
 
         $pieza = Pieza::create($request->all());
-
+        $piezaNew = new PiezaNew();
+        $piezaNew->pieza_id = $pieza->id;
+        $piezaNew->codigo = Auth()->user()->name;
+        $piezaNew->entrada = true;
+        $piezaNew->salida = false;
+        $piezaNew->save();
         return redirect()->route('piezas.index')
             ->with('success', 'Los datos han sido creados de manera exitosa.');
     }
@@ -94,6 +99,7 @@ class PiezaController extends Controller
 
         $piezaNew = new PiezaNew();
         $piezaNew->pieza_id = $pieza->id;
+        $piezaNew->codigo = Auth()->user()->name;
         $piezaNew->entrada = true;
         $piezaNew->salida = false;
         $piezaNew->save();
