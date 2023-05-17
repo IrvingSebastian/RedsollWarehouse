@@ -78,6 +78,7 @@
                                         <th>Entradas</th>
                                         <th>Salidas</th>
                                         <th>Stock</th>
+                                        <th>Fecha de Creación</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -89,6 +90,7 @@
                                         <td>{{$instaler->piezas->entradas}}</td>
                                         <td>{{$instaler->piezas->salidas}}</td>
                                         <td>{{$instaler->piezas->stock}}</td>
+                                        <td>{{$admin->piezas->created_at}}</td>
                                         <td>
                                             <form action="{{ route('piezas.destroy', $instaler->piezas->id) }}" method="POST">
                                                 <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$instaler->piezas->id) }}">
