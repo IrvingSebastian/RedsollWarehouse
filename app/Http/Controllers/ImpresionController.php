@@ -57,23 +57,38 @@ class ImpresionController extends Controller
     public function borrar1($id)
     {
         if (session()->has('piezas_select') && session()->has('cantidades_select')) {
-            $piezas = session('piezas_select');
-            $cantidades = session('cantidades_select');
+            foreach (session('piezas_select') as $pieza) {
+                foreach ($pieza as $pieza1) {
+                    $piezas[] = $pieza1;
+                }
+            }
+            
+            foreach (session('cantidades_select') as $cantidad) {
+                foreach ($cantidad as $cantidad1){
+                    $cantidades[] = $cantidad1;
+                }             
+            }
 
+            $pro = 0;
             $aux = 0;
-            foreach ($piezas as $key => $pieza) {
-                if ($pieza == $id) {
-                    unset($piezas[$key]);
-                    unset($cantidades[$key]);
+
+            foreach ($piezas as $pz) {
+                if ($pz == $id) {
+                    $pro = ($piezas[$aux]);
+                    unset($piezas[$aux]);
+                    unset($cantidades[$aux]);
                     break;
                 }
                 $aux++;
             }
 
-            session(['piezas_select' => $piezas]);
-            session(['cantidades_select' => $cantidades]);
+            session()->forget('piezas_select');
+            session()->forget('cantidades_select');
 
-            return redirect()->back()->with('success', 'Se borró la pieza ' . $id . ' de la selección.');
+            session()->push('piezas_select', $piezas);
+            session()->push('cantidades_select', $cantidades);
+
+            return redirect()->back()->with('success', 'Se borró la pieza ' . $pro . ' de la selección.');
         } else {
             return redirect()->back()->with('success', 'No hay piezas seleccionadas.');
         }
