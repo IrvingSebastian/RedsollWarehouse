@@ -107,7 +107,6 @@
                                                         />
                                                         <label class="form-label" for="typeNumber">En stock {{$pieza->stock}}</label>
                                                     </div>
-                                                @endif     
                                                 @else
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
