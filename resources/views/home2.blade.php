@@ -50,12 +50,8 @@
                                                 <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$admin->piezas->id) }}">
-                                                        <i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
-                                                        <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
                                                 </form>       
                                             </td>
                                         </tr>
@@ -95,12 +91,7 @@
                                             <form action="{{ route('piezas.destroy', $instaler->piezas->id) }}" method="POST">
                                                 <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$instaler->piezas->id) }}">
                                                     <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$instaler->piezas->id) }}">
-                                                    <i class="fa fa-fw fa-edit"></i> Editar</a>
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
-                                                    <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
                                             </form>       
                                         </td>
                                     </tr>
