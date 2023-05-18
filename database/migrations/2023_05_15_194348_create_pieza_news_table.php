@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('pieza_id');
             $table->boolean('salida');
             $table->boolean('entrada');
+            $table->boolean('devolucion');
             $table->timestamps();
         });
     }

@@ -1,5 +1,12 @@
 <div class="box box-info padding-1">
     <div class="box-body">
+        @if (Request::is('devolucion/*'))
+        <div class="form-group">
+            {{ Form::label('devolucion') }}
+            {{ Form::text('devolucion', $pieza->devolucion, ['class' => 'form-control' . ($errors->has('devolucion') ? ' is-invalid' : ''), 'placeholder' => 'Devolucion', 'required']) }}
+            {!! $errors->first('devolucion', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        @else 
         <div class="form-group">
             {{ Form::label('codigo') }}
             {{ Form::text('codigo', $pieza->codigo, ['class' => 'form-control' . ($errors->has('codigo') ? ' is-invalid' : ''), 'placeholder' => 'Codigo', 'required']) }}
@@ -24,8 +31,8 @@
             {{ Form::label('stock') }}
             {{ Form::text('stock', $pieza->stock, ['class' => 'form-control' . ($errors->has('stock') ? ' is-invalid' : ''), 'placeholder' => 'Stock', 'required']) }}
             {!! $errors->first('stock', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-    </div>
+        </div>            
+        @endif      
     <br>
     <div class="box-footer mt20">
         @if(Request::is('piezas/create'))
@@ -33,11 +40,11 @@
                 <i class="fa fa-fw fa-upload"></i>Subir datos</button>
             <button type="reset" class="btn btn-warning btn-sm" style="font-size: small">
                 <i class="fa fa-fw fa-refresh"></i></i>Reiniciar</button>
-        @endif
-        @if(Request::is('piezas/*/edit'))
+        @elseif(Request::is('piezas/*/edit') || Request::is('devolucion/*'))
             <button type="submit" class="btn btn-success btn-sm" style="font-size: small">
                 <i class="fa fa-fw fa-edit"></i>Actualizar</button>
         @endif
+
         <a class="btn btn-primary btn-sm" href="{{ route('piezas.index') }}" style="font-size: small">
             <i class="fa fa-fw fa-arrow-circle-left"></i> Volver </a>
     </div>

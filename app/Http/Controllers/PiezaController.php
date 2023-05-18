@@ -53,6 +53,7 @@ class PiezaController extends Controller
         $piezaNew->user_id = Auth()->user()->id;
         $piezaNew->entrada = true;
         $piezaNew->salida = false;
+        $piezaNew->devolucion = false;
         $piezaNew->save();
         return redirect()->route('piezas.index')
             ->with('success', 'Los datos han sido creados de manera exitosa.');
@@ -102,6 +103,7 @@ class PiezaController extends Controller
         $piezaNew->user_id = Auth()->user()->id;
         $piezaNew->entrada = true;
         $piezaNew->salida = false;
+        $piezaNew->devolucion = false;
         $piezaNew->save();
 
         return redirect()->route('piezas.index')
@@ -136,5 +138,45 @@ class PiezaController extends Controller
             ->paginate(50);
          
         return view('pieza.index', compact('piezas','texto'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function devolucion($id){
+        $pieza = Pieza::find($id);
+
+        return view('pieza.devolucion', compact('pieza'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Pieza $pieza
+     * @return \Illuminate\Http\Response
+     */
+    public function devolver(Request $request, $id){
+        $pieza = Pieza::find($id);
+        $dev = ($request->get('devolucion'));
+
+        $pieza->stock += $dev;
+        $pieza->entradas += $dev;
+        $pieza->devolucion = $dev;
+        $pieza->save();
+
+        $piezaNew = new PiezaNew();
+        $piezaNew->pieza_id = $pieza->id;
+        $piezaNew->user_id = Auth()->user()->id;
+        $piezaNew->entrada = false;
+        $piezaNew->salida = false;
+        $piezaNew->devolucion = true;
+        $piezaNew->save();
+
+        return redirect()->route('piezas.index')
+            ->with('success', 'Se han actualizado los datos de la pieza devuelta.');
     }
 }

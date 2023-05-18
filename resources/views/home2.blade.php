@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                Administradores
+                Administradores que editaron piezas
                 @foreach ($admins as $admin)
                         <div class="card">
                             <div class="card-header">
@@ -33,8 +33,6 @@
                                             <th>Codigo</th>
                                             <th>Descripcion</th>
                                             <th>Entradas</th>
-                                            <th>Salidas</th>
-                                            <th>Stock</th>
                                             <th>Fecha de Modificación</th>
                                             <th></th>
                                         </tr>
@@ -45,8 +43,6 @@
                                             <td>{{$admin->piezas->codigo}}</td>
                                             <td>{{$admin->piezas->descripcion}}</td>
                                             <td>{{$admin->piezas->entradas}}</td>
-                                            <td>{{$admin->piezas->salidas}}</td>
-                                            <td>{{$admin->piezas->stock}}</td>
                                             <td>{{$admin->piezas->updated_at}}</td>
                                             <td>
                                                 <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
@@ -61,10 +57,48 @@
                                 </table>
                             </div>
                         </div>
-                        <br>
                 @endforeach
 
-                Instaladores
+                Administradores que devolvieron piezas
+                @foreach ($admins2 as $admin)
+                        <div class="card">
+                            <div class="card-header">
+                                {{$admin->users->name}}
+                                <table class="table table-striped table-hover" style="font-size: small">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th>ID Pieza</th>
+                                            <th>Codigo</th>
+                                            <th>Descripcion</th>
+                                            <th>Entradas</th>
+                                            <th>Fecha de Modificación</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{$admin->piezas->id}}</td>
+                                            <td>{{$admin->piezas->codigo}}</td>
+                                            <td>{{$admin->piezas->descripcion}}</td>
+                                            <td>{{$admin->piezas->entradas}}</td>
+                                            <td>{{$admin->piezas->updated_at}}</td>
+                                            <td>
+                                                <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
+                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
+                                                        <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>       
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                @endforeach
+
+                <br>
+                Instaladores que sacaron piezas
                 @foreach ($instalers as $instaler)
                     <div class="card">
                         <div class="card-header">
@@ -75,9 +109,7 @@
                                         <th>ID Pieza</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
-                                        <th>Entradas</th>
                                         <th>Salidas</th>
-                                        <th>Stock</th>
                                         <th>Fecha de Actualización</th>
                                         <th></th>
                                     </tr>
@@ -87,9 +119,7 @@
                                         <td>{{$instaler->piezas->id}}</td>
                                         <td>{{$instaler->piezas->codigo}}</td>
                                         <td>{{$instaler->piezas->descripcion}}</td>
-                                        <td>{{$instaler->piezas->entradas}}</td>
                                         <td>{{$instaler->piezas->salidas}}</td>
-                                        <td>{{$instaler->piezas->stock}}</td>
                                         <td>{{$instaler->piezas->updated_at}}</td>
                                         <td>
                                             <form action="{{ route('piezas.destroy', $instaler->piezas->id) }}" method="POST">

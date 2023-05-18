@@ -34,7 +34,9 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 //Rutas de los registros
 Route::resource('piezas', PiezaController::class)->middleware('auth');
-Route::get('/search', [PiezaController::class, 'search'])->name('search')->middleware('auth');
+Route::get('/search', [PiezaController::class, 'search'])->name('piezas.search')->middleware('auth');
+Route::get('/devolucion/{id}' , [PiezaController::class, 'devolucion'])->name('piezas.devolucion')->middleware('auth');
+Route::patch('/devolver/{id}' , [PiezaController::class, 'devolver'])->name('piezas.devolver')->middleware('auth');
 
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('instaler');
 Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('instaler');

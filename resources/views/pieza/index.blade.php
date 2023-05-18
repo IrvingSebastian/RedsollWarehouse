@@ -22,7 +22,7 @@
                                         <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
                                     </a>
                                 @endif                            
-                                <form class="mt-2" action="{{route('search')}}" method="get">
+                                <form class="mt-2" action="{{route('piezas.search')}}" method="get">
                                     @csrf
                                     <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small" 
                                         @if(isset($texto))
@@ -60,6 +60,9 @@
                                         <th>Entradas</th>
                                         <th>Salidas</th>
                                         <th>Stock</th>
+                                        @if (Auth::user()->rol == "Administrador")
+                                            <th>Devolucion</th>
+                                        @endif
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -81,6 +84,9 @@
 											<td>{{ $pieza->entradas }}</td>
 											<td>{{ $pieza->salidas }}</td>
 											<td>{{ $pieza->stock }}</td>
+                                            @if (Auth::user()->rol == "Administrador")
+                                                <td>{{ $pieza->devolucion }}</td>
+                                            @endif
                                             <td>
                                                 @if (Auth::user()->rol == "Administrador")
                                                 <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
@@ -88,9 +94,11 @@
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
                                                         <i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza->id) }}">
+                                                        <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                    <button type="submit" class="btn btn-danger btn-sm mt-2" style="font-size: small">
                                                         <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
                                                 </form>
                                                     
@@ -107,7 +115,7 @@
                                                         />
                                                         <label class="form-label" for="typeNumber">En stock {{$pieza->stock}}</label>
                                                     </div>
-                                                @else
+                                                @elseif (Auth::user()->rol == "Jefe de Almacen")
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                 @endif

@@ -14,19 +14,20 @@ class PiezaNew extends Model
         'user_id' => 'required',
         'salida' => 'required',
         'entrada' => 'required',
+        'devolucion' => 'required',
     ];
 
     protected $perPage = 5;
 
-    protected $fillable = ['pieza_id', 'user_id', 'entrada','salida'];
+    protected $fillable = ['pieza_id', 'user_id', 'entrada','salida', 'devolucion'];
 
     public function piezas()
     {
-        return $this->hasOne(Pieza::class, 'id', 'pieza_id');
+        return $this->hasMany(Pieza::class, 'id', 'pieza_id');
     }
 
     public function users()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 }

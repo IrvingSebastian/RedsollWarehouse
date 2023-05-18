@@ -41,7 +41,14 @@
                             <strong>Stock:</strong>
                             {{ $pieza->stock }}
                         </div>
-
+                        <div class="form-group">
+                                <strong>Devolucion:</strong>
+                                {{ $pieza->devolucion }}
+                        </div>
+                        <div class="form-group">
+                                <strong>Fecha de Modificación:</strong>
+                                {{ $pieza->updated_at }}
+                        </div>
                     </div>
                 </div>
             </div>

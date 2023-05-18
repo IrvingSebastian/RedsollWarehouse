@@ -62,10 +62,16 @@ class HomeController extends Controller
             ->pluck('user_id')
             ->unique(); 
 
+        $ad2 = PiezaNew::where('devolucion', 1)
+            ->pluck('user_id')
+            ->unique();
+
         $admins = PiezaNew::whereIn('user_id', $ad)->get();
+
+        $admins2 = PiezaNew::whereIn('user_id', $ad2)->get();
 
         $instalers = PiezaNew::whereIn('user_id', $inst)->get();
 
-        return view('home2', compact('admins', 'instalers'));
+        return view('home2', compact('admins', 'admins2', 'instalers'));
     }
 }

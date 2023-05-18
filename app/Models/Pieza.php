@@ -26,6 +26,7 @@ class Pieza extends Model
 		'entradas' => 'required',
 		'salidas' => 'required',
 		'stock' => 'required',
+    'devolucion' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,10 +36,10 @@ class Pieza extends Model
      *
      * @var array
      */
-    protected $fillable = ['codigo','descripcion','entradas','salidas','stock'];
+    protected $fillable = ['codigo','descripcion','entradas','salidas','stock', 'devolucion'];
 
     public function piezaNews()
     {
-      return $this->hasMany(PiezaNew::class, 'pieza_id', 'id');
+      return $this->belongsTo(PiezaNew::class, 'pieza_id', 'id');
     }
 }

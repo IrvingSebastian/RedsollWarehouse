@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('entradas');
             $table->bigInteger('salidas');
             $table->bigInteger('stock');
+            $table->bigInteger('devolucion');
             $table->timestamps();
         });
     }
