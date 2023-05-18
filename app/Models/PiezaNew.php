@@ -23,11 +23,11 @@ class PiezaNew extends Model
 
     public function piezas()
     {
-        return $this->hasMany(Pieza::class, 'id', 'pieza_id');
+        return $this->hasOne(Pieza::class, 'id', 'pieza_id');
     }
 
     public function users()
     {
-        return $this->hasMany(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

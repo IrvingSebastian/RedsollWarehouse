@@ -40,6 +40,6 @@ class Pieza extends Model
 
     public function piezaNews()
     {
-      return $this->belongsTo(PiezaNew::class, 'pieza_id', 'id');
+      return $this->hasMany(PiezaNew::class, 'pieza_id', 'id');
     }
 }
