@@ -21,12 +21,11 @@ class Pieza extends Model
 {
     
     static $rules = [
-		'codigo' => 'required',
-		'descripcion' => 'required',
-		'entradas' => 'required',
-		'salidas' => 'required',
-		'stock' => 'required',
-    'devolucion' => 'required',
+		  'codigo' => 'required',
+		  'descripcion' => 'required',
+		  'entradas' => 'required',
+		  'salidas' => 'required',
+		  'stock' => 'required',
     ];
 
     protected $perPage = 20;

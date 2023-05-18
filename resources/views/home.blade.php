@@ -52,7 +52,7 @@
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                             <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza1->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza->id) }}">
+                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza1->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                             @csrf
                                             @method('DELETE')
@@ -103,7 +103,7 @@
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                             <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza2->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza->id) }}">
+                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza2->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                             @csrf
                                             @method('DELETE')
@@ -153,7 +153,7 @@
                                                     <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                 <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$piezaAgotada->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza->id) }}">
+                                                <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$piezaAgotada->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                                 @csrf
                                                 @method('DELETE')
@@ -198,7 +198,7 @@
                                                     <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                 <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$piezaBajoStock->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza->id) }}">
+                                                <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$piezaBajoStock->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                                 @csrf
                                                 @method('DELETE')
