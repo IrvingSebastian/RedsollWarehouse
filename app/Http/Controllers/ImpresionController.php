@@ -117,7 +117,7 @@ class ImpresionController extends Controller
                 $cd = $cantidades[$aux]; 
 
                 $pz->stock -= $cd;
-                $pz->entradas = $cd;
+                $pz->salidas = $cd;
                 $pz->save();
 
                 $piezaNew = new PiezaNew();
