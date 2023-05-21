@@ -17,7 +17,7 @@
          <!-- style css -->
          <link rel="stylesheet" href="{{asset('css/style.css')}}" media="screen"/>
          <link rel="stylesheet" href="{{asset('css/responsive.css')}}" media="screen"/>
-         <link rel="stylesheet" href="{{asset('css/jquery.fancybox.css')}}" media="screen"/>
+         <link rel="stylesheet" href="{{asset('css/jquery.fancybox.min.css')}}" media="screen"/>
          <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}" media="screen">
          <!-- fevicon -->
          <link rel="icon" href="{{asset('images/favicon.ico')}}" media="screen"/>
