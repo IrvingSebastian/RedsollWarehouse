@@ -147,9 +147,9 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('/js/cantidad.js')}}"></script>
+    <script src="{{asset('/js/cantidad.js')}}" async></script>
 
-    <script>
+    <script async>
         let selectedItems = [];
 
         document.querySelectorAll('input[type=checkbox][name=piezas\\[\\]]').forEach(function (el) {

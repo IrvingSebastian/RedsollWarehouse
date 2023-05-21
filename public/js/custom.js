@@ -11,7 +11,7 @@ $(function () {
 
 	setTimeout(function () {
 		$('.loader_bg').fadeToggle();
-	}, 1500);
+	}, 1000);
 
 	/* Tooltip
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
@@ -50,13 +50,5 @@ $(function () {
 			$(this).toggleClass('active');
 		});
 	});
-
-	/* Product slider 
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	// optional
-	$('#blogCarousel').carousel({
-		interval: 5000
-	});
-
 
 });
