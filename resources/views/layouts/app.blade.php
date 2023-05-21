@@ -13,24 +13,24 @@
          <meta name="description" content="TECNOLOGÍA PARA TODOS">
          <meta name="author" content="REDSOLL">
          <!-- bootstrap css -->
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" async>
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" media="screen">
          <!-- style css -->
-         <link rel="stylesheet" href="{{asset('css/style.css')}}" async/>
-         <link rel="stylesheet" href="{{asset('css/responsive.css')}}" async/>
-         <link rel="stylesheet" href="{{asset('css/jquery.fancybox')}}" async/>
-         <link rel="stylesheet" href="{{asset('css/jquery-ui')}}" async>
+         <link rel="stylesheet" href="{{asset('css/style.css')}}" media="screen"/>
+         <link rel="stylesheet" href="{{asset('css/responsive.css')}}" media="screen"/>
+         <link rel="stylesheet" href="{{asset('css/jquery.fancybox')}}" media="screen"/>
+         <link rel="stylesheet" href="{{asset('css/jquery-ui')}}" media="screen">
          <!-- fevicon -->
-         <link rel="icon" href="{{asset('images/favicon.ico')}}" async/>
+         <link rel="icon" href="{{asset('images/favicon.ico')}}" media="screen"/>
          <!-- Tweaks for older IEs-->
-         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" async>  
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen" async>
-         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" async>
+         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="screen">  
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" media="screen">
          <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
          <!-- Fonts -->
-         <link rel="dns-prefetch" href="{{asset('fonts.gstatic.com')}}" async>
-         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" async>
+         <link rel="dns-prefetch" href="{{asset('fonts.gstatic.com')}}" media="screen">
+         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" media="screen">
     </head>
    <!-- body -->
 
