@@ -7,6 +7,7 @@ use App\Models\Pieza;
 use App\Models\P_Entradas;
 use App\Models\P_Salidas;
 use App\Models\P_Devoluciones;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -50,9 +51,11 @@ class HomeController extends Controller
 
     public function home2()
     {
-        $admins = P_Entradas::latest()->first();
-        $admins2 = P_Salidas::latest()->first();
-        $instalers = P_Devoluciones::latest()->first();
+        $admins = P_Entradas::all();
+
+        $admins2 = User::all();
+
+        $instalers = P_Salidas::all();
 
         return view('home2', compact('admins', 'admins2', 'instalers'));
     }

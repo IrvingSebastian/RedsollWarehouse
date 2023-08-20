@@ -161,14 +161,13 @@ class PiezaController extends Controller
         $dev = ($request->get('devolucion'));
 
         $pieza->stock += $dev;
-        $pieza->entradas += $dev;
         $pieza->devolucion = $dev;
         $pieza->save();
 
         $piezaNew = new P_Devoluciones();
-        $piezaNew->pieza_id = $pieza->id;
-        $piezaNew->user_id = Auth()->user()->id;
-        $piezaNew->cantidad = 0;
+        $piezaNew->id_pieza = $pieza->id;
+        $piezaNew->id_user = Auth()->user()->id;
+        $piezaNew->cantidad = $pieza->devolucion;
         $piezaNew->save();
 
         return redirect()->route('piezas.index')

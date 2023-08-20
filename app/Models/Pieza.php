@@ -38,16 +38,16 @@ class Pieza extends Model
 
     public function entradas()
     {
-        return $this->hasMany(P_Entradas::class);
+        return $this->hasMany(P_Entradas::class, 'id_pieza', 'id');
     }
 
     public function salidas()
     {
-        return $this->hasMany(P_Salidas::class);
+        return $this->hasMany(P_Salidas::class, 'id_pieza', 'id');
     }
 
     public function devoluciones()
     {
-        return $this->hasMany(P_Devoluciones::class);
+        return $this->hasMany(P_Devoluciones::class, 'id_pieza', 'id');
     }
 }

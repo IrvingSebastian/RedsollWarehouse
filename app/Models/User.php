@@ -45,16 +45,16 @@ class User extends Authenticatable
 
     public function entradas()
     {
-        return $this->hasMany(P_Entradas::class);
+        return $this->hasMany(P_Entradas::class, 'id_user', 'id');
     }
 
     public function salidas()
     {
-        return $this->hasMany(P_Salidas::class);
+        return $this->hasMany(P_Salidas::class, 'id_user', 'id');
     }
 
     public function devoluciones()
     {
-        return $this->hasMany(P_Devoluciones::class);
+        return $this->hasMany(P_Devoluciones::class, 'id_user', 'id');
     }
 }

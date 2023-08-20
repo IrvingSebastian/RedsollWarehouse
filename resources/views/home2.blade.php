@@ -30,9 +30,12 @@
                     </div>
                 @else
                     @foreach ($admins as $admin)
+                        @if($admin->entradas->isEmpty())
+
+                        @else
                             <div class="card">
                                 <div class="card-header">
-                                    {{$admin->users->name}}
+                                    {{$admin->user->name}}
                                     <table class="table table-striped table-hover" style="font-size: small">
                                         <thead class="thead">
                                             <tr>
@@ -46,14 +49,14 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{$admin->piezas->id}}</td>
-                                                <td>{{$admin->piezas->codigo}}</td>
-                                                <td>{{$admin->piezas->descripcion}}</td>
-                                                <td>{{$admin->piezas->entradas}}</td>
-                                                <td>{{$admin->piezas->updated_at}}</td>
+                                                <td>{{$admin->pieza->id}}</td>
+                                                <td>{{$admin->pieza->codigo}}</td>
+                                                <td>{{$admin->pieza->descripcion}}</td>
+                                                <td>{{$admin->pieza->entradas}}</td>
+                                                <td>{{$admin->pieza->updated_at}}</td>
                                                 <td>
-                                                    <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
-                                                        <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
+                                                    <form action="{{ route('piezas.destroy', $admin->pieza->id) }}" method="POST">
+                                                        <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->pieza->id) }}">
                                                             <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                         @csrf
                                                         @method('DELETE')
@@ -64,7 +67,7 @@
                                     </table>
                                 </div>
                             </div>
-                        <br>
+                        @endif
                     @endforeach
                 @endif
 
@@ -79,9 +82,12 @@
                     </div>
                 @else
                     @foreach ($admins2 as $admin)
+                        @if($admin->devoluciones->isEmpty())
+
+                        @else
                             <div class="card">
                                 <div class="card-header">
-                                    {{$admin->users->name}}
+                                    {{$admin->name}}
                                     <table class="table table-striped table-hover" style="font-size: small">
                                         <thead class="thead">
                                             <tr>
@@ -94,29 +100,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>{{$admin->piezas->id}}</td>
-                                                <td>{{$admin->piezas->codigo}}</td>
-                                                <td>{{$admin->piezas->descripcion}}</td>
-                                                <td>{{$admin->piezas->devolucion}}</td>
-                                                <td>{{$admin->piezas->updated_at}}</td>
-                                                <td>
-                                                    <form action="{{ route('piezas.destroy', $admin->piezas->id) }}" method="POST">
-                                                        <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->piezas->id) }}">
-                                                            <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>       
-                                                </td>
-                                            </tr>
+                                                @foreach ($admin->devoluciones as $devolucion)
+                                                <tr>
+                                                    <td>{{ $devolucion->pieza->id }}</td>
+                                                    <td>{{ $devolucion->pieza->codigo }}</td>
+                                                    <td>{{ $devolucion->pieza->descripcion }}</td>
+                                                    <td>{{ $devolucion->pieza->devolucion }}</td>
+                                                    <td>{{ $devolucion->pieza->updated_at }}</td>
+                                                    <td>
+                                                        <form action="{{ route('piezas.destroy', $devolucion->pieza->id ) }}" method="POST">
+                                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$devolucion->pieza->id ) }}">
+                                                                <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>       
+                                                    </td>
+                                                </tr>
+                                                @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        <br>
+                        @endif
                     @endforeach
                 @endif
-
                 <br>
                 <br>
                 Instaladores que sacaron piezas
@@ -128,39 +135,43 @@
                     </div>
                 @else
                     @foreach ($instalers as $instaler)
-                        <div class="card">
-                            <div class="card-header">
-                                {{$instaler->users->name}}
-                                <table class="table table-striped table-hover" style="font-size: small">
-                                    <thead class="thead">
-                                        <tr>
-                                            <th>ID Pieza</th>
-                                            <th>Codigo</th>
-                                            <th>Descripcion</th>
-                                            <th>Salidas</th>
-                                            <th>Fecha de Actualización</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{$instaler->piezas->id}}</td>
-                                            <td>{{$instaler->piezas->codigo}}</td>
-                                            <td>{{$instaler->piezas->descripcion}}</td>
-                                            <td>{{$instaler->piezas->salidas}}</td>
-                                            <td>{{$instaler->piezas->updated_at}}</td>
-                                            <td>
-                                                <form action="{{ route('piezas.destroy', $instaler->piezas->id) }}" method="POST">
-                                                    <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$instaler->piezas->id) }}">
-                                                        <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @csrf
-                                                </form>       
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        @if($instaler->salidas->isEmpty())
+
+                        @else
+                            <div class="card">
+                                <div class="card-header">
+                                    {{$instaler->user->name}}
+                                    <table class="table table-striped table-hover" style="font-size: small">
+                                        <thead class="thead">
+                                            <tr>
+                                                <th>ID Pieza</th>
+                                                <th>Codigo</th>
+                                                <th>Descripcion</th>
+                                                <th>Salidas</th>
+                                                <th>Fecha de Actualización</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{$instaler->pieza->codigo}}</td>
+                                                <td>{{$instaler->pieza->id}}</td>
+                                                <td>{{$instaler->pieza->descripcion}}</td>
+                                                <td>{{$instaler->pieza->salidas}}</td>
+                                                <td>{{$instaler->pieza->updated_at}}</td>
+                                                <td>
+                                                    <form action="{{ route('piezas.destroy', $instaler->pieza->id) }}" method="POST">
+                                                        <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$instaler->pieza->id) }}">
+                                                            <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        @csrf
+                                                    </form>       
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <br>
                     @endforeach
                 @endif
