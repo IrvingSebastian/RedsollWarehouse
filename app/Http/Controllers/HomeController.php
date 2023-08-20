@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PiezaNew;
 use App\Models\Pieza;
-use App\Models\User;
+use App\Models\P_Entradas;
+use App\Models\P_Salidas;
+use App\Models\P_Devoluciones;
 
 class HomeController extends Controller
 {
@@ -37,40 +38,21 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $pz1 = PiezaNew::where('entrada', 1)->latest()->take(5)->pluck('pieza_id');
-
-        $pz2 = PiezaNew::where('salida', 1)->latest()->take(5)->pluck('pieza_id');
-
+        $piezas1 = P_Entradas::latest()->first();
+        $piezas2 = P_Salidas::latest()->first();
         $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
         $piezasBajoStock = Pieza::where('stock', '<=', 5)
             ->where('stock', '>', 0)
             ->get();
 
-        $piezas1 = Pieza::whereIn('id', $pz1)->get();
-        $piezas2 = Pieza::whereIn('id', $pz2)->get();
-
-        return view('home', compact('piezasAgotadas', 'piezasBajoStock', 'piezas1', 'piezas2'));
+        return view('home', compact('piezas1', 'piezas2', 'piezasAgotadas', 'piezasBajoStock'));
     }
 
     public function home2()
     {
-        $ad = PiezaNew::where('entrada', 1)
-            ->pluck('user_id')
-            ->unique();
-
-        $inst = PiezaNew::where('salida', 1)
-            ->pluck('user_id')
-            ->unique(); 
-
-        $ad2 = PiezaNew::where('devolucion', 1)
-            ->pluck('user_id')
-            ->unique();
-
-        $admins = PiezaNew::whereIn('user_id', $ad)->get();
-
-        $admins2 = PiezaNew::whereIn('user_id', $ad2)->get();
-
-        $instalers = PiezaNew::whereIn('user_id', $inst)->get();
+        $admins = P_Entradas::latest()->first();
+        $admins2 = P_Salidas::latest()->first();
+        $instalers = P_Devoluciones::latest()->first();
 
         return view('home2', compact('admins', 'admins2', 'instalers'));
     }

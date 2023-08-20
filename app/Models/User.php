@@ -43,8 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function piezaNews()
+    public function entradas()
     {
-        return $this->hasMany(PiezaNew::class, 'user_id', 'id');
+        return $this->hasMany(P_Entradas::class);
+    }
+
+    public function salidas()
+    {
+        return $this->hasMany(P_Salidas::class);
+    }
+
+    public function devoluciones()
+    {
+        return $this->hasMany(P_Devoluciones::class);
     }
 }

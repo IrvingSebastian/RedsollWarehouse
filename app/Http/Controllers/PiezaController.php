@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\P_Devoluciones;
 use App\Models\Pieza;
-use App\Models\PiezaNew;
+use App\Models\P_Entradas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,12 +49,10 @@ class PiezaController extends Controller
         request()->validate(Pieza::$rules);
 
         $pieza = Pieza::create($request->all());
-        $piezaNew = new PiezaNew();
+        $piezaNew = new P_Entradas();
         $piezaNew->pieza_id = $pieza->id;
         $piezaNew->user_id = Auth()->user()->id;
-        $piezaNew->entrada = true;
-        $piezaNew->salida = false;
-        $piezaNew->devolucion = false;
+        $piezaNew->cantidad = 0;
         $piezaNew->save();
         return redirect()->route('piezas.index')
             ->with('success', 'Los datos han sido creados de manera exitosa.');
@@ -98,12 +97,10 @@ class PiezaController extends Controller
 
         $pieza->update($request->all());
 
-        $piezaNew = new PiezaNew();
+        $piezaNew = new P_Entradas();
         $piezaNew->pieza_id = $pieza->id;
         $piezaNew->user_id = Auth()->user()->id;
-        $piezaNew->entrada = true;
-        $piezaNew->salida = false;
-        $piezaNew->devolucion = false;
+        $piezaNew->cantidad = 0;
         $piezaNew->save();
 
         return redirect()->route('piezas.index')
@@ -168,12 +165,10 @@ class PiezaController extends Controller
         $pieza->devolucion = $dev;
         $pieza->save();
 
-        $piezaNew = new PiezaNew();
+        $piezaNew = new P_Devoluciones();
         $piezaNew->pieza_id = $pieza->id;
         $piezaNew->user_id = Auth()->user()->id;
-        $piezaNew->entrada = false;
-        $piezaNew->salida = false;
-        $piezaNew->devolucion = true;
+        $piezaNew->cantidad = 0;
         $piezaNew->save();
 
         return redirect()->route('piezas.index')

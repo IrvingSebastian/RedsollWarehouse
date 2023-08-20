@@ -22,7 +22,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 Administradores que editaron piezas
-                @if($admins->isEmpty())
+                @if($admins == null)
                     <div class="card">
                         <div class="card-header">
                             No hay registros
@@ -71,7 +71,7 @@
                 <br>
                 <br>
                 Administradores que devolvieron piezas
-                @if($admins2->isEmpty())
+                @if($admins2 == null)
                     <div class="card">
                         <div class="card-header">
                             No hay registros
@@ -120,7 +120,7 @@
                 <br>
                 <br>
                 Instaladores que sacaron piezas
-                @if($instalers->isEmpty())
+                @if($instalers == null)
                     <div class="card">
                         <div class="card-header">
                             No hay registros

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->text('descripcion');
             $table->bigInteger('entradas');
             $table->bigInteger('salidas');
-            $table->bigInteger('stock');
             $table->bigInteger('devolucion');
+            $table->bigInteger('stock');
+            $table->bigInteger('piezas_minimas');
             $table->timestamps();
         });
     }

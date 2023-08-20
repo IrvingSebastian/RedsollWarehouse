@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\P_Salidas;
 use App\Models\Pieza;
 use App\Models\PiezaNew;
 use Illuminate\Http\Request;
@@ -120,12 +121,10 @@ class ImpresionController extends Controller
                 $pz->salidas = $cd;
                 $pz->save();
 
-                $piezaNew = new PiezaNew();
-                $piezaNew->pieza_id = $pz->id;
-                $piezaNew->user_id = auth()->user()->id;
-                $piezaNew->entrada = false;
-                $piezaNew->salida = true;
-                $piezaNew->devolucion = false;
+                $piezaNew = new P_Salidas();
+                $piezaNew->pieza_id = $pieza->id;
+                $piezaNew->user_id = Auth()->user()->id;
+                $piezaNew->cantidad = 0;
                 $piezaNew->save();
 
                 $aux++;

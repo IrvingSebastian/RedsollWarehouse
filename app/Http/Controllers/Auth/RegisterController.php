@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\BossMiddleware;
+use App\Http\Middleware\InstalMiddleware;
 use Illuminate\Support\Facades\URL;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,7 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'rol' => ['required', 'string', 'max:255', 'in:Administrador,Instalador'],
+            'rol' => ['required', 'string', 'max:255', 'in:Administrador,Instalador,Jefe de Almacen'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -76,9 +80,9 @@ class RegisterController extends Controller
     }
 
     protected function registered(Request $request, $user)
-    {
-        $this->guard()->logout($user);
-        
+    {        
+        Auth::logout();
+
         return redirect('login')->with('status', 'Usuario registrado correctamente, inicie sesión ahora.');
     }
 }

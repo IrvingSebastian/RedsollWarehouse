@@ -18,14 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Pieza extends Model
-{
-    
+{  
     static $rules = [
-		  'codigo' => 'required',
-		  'descripcion' => 'required',
-		  'entradas' => 'required',
-		  'salidas' => 'required',
-		  'stock' => 'required',
+      'codigo' => 'required',
+      'descripcion' => 'required',
+      'entradas' => 'required',
+      'salidas' => 'required',
+      'stock' => 'required',
     ];
 
     protected $perPage = 20;
@@ -37,8 +36,18 @@ class Pieza extends Model
      */
     protected $fillable = ['codigo','descripcion','entradas','salidas','stock', 'devolucion'];
 
-    public function piezaNews()
+    public function entradas()
     {
-      return $this->hasMany(PiezaNew::class, 'pieza_id', 'id');
+        return $this->hasMany(P_Entradas::class);
+    }
+
+    public function salidas()
+    {
+        return $this->hasMany(P_Salidas::class);
+    }
+
+    public function devoluciones()
+    {
+        return $this->hasMany(P_Devoluciones::class);
     }
 }

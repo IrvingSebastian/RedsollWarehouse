@@ -62,6 +62,7 @@
                                         <th>Stock</th>
                                         @if (Auth::user()->rol == "Administrador")
                                             <th>Devolucion</th>
+                                            <th>Piezas Mínimas</th>
                                         @endif
                                         <th></th>
                                     </tr>
@@ -86,6 +87,7 @@
 											<td>{{ $pieza->stock }}</td>
                                             @if (Auth::user()->rol == "Administrador")
                                                 <td>{{ $pieza->devolucion }}</td>
+                                                <td>{{ $pieza->piezas_minimas }}</td>
                                             @endif
                                             <td>
                                                 @if (Auth::user()->rol == "Administrador")
