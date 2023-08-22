@@ -40,19 +40,19 @@
                                 @if($piezas1 != null)
                                 @foreach ($piezas1 as $pieza1 )
                                 <tr>
-                                    <td>{{ $pieza1->id }}</td>
-                                    <td>{{ $pieza1->codigo }}</td>
-                                    <td>{{ $pieza1->descripcion }}</td>
-                                    <td>{{ $pieza1->entradas }}</td>
-                                    <td>{{ $pieza1->salidas }}</td>
-                                    <td>{{ $pieza1->stock }}</td>
+                                    <td>{{ $pieza1->pieza->id }}</td>
+                                    <td>{{ $pieza1->pieza->codigo }}</td>
+                                    <td>{{ $pieza1->pieza->descripcion }}</td>
+                                    <td>{{ $pieza1->pieza->entradas }}</td>
+                                    <td>{{ $pieza1->pieza->salidas }}</td>
+                                    <td>{{ $pieza1->pieza->stock }}</td>
                                     <td>
-                                        <form action="{{ route('piezas.destroy', $pieza1->id) }}" method="POST">
-                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza1->id) }}">
+                                        <form action="{{ route('piezas.destroy', $pieza1->pieza->id) }}" method="POST">
+                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza1->pieza->id) }}">
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza1->id) }}">
+                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza1->pieza->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza1->id) }}">
+                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza1->pieza->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                             @csrf
                                             @method('DELETE')

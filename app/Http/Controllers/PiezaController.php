@@ -50,8 +50,8 @@ class PiezaController extends Controller
 
         $pieza = Pieza::create($request->all());
         $piezaNew = new P_Entradas();
-        $piezaNew->pieza_id = $pieza->id;
-        $piezaNew->user_id = Auth()->user()->id;
+        $piezaNew->id_pieza = $pieza->id;
+        $piezaNew->id_user = Auth()->user()->id;
         $piezaNew->cantidad = 0;
         $piezaNew->save();
         return redirect()->route('piezas.index')
@@ -97,12 +97,7 @@ class PiezaController extends Controller
 
         $pieza->update($request->all());
 
-        $piezaNew = new P_Entradas();
-        $piezaNew->pieza_id = $pieza->id;
-        $piezaNew->user_id = Auth()->user()->id;
-        $piezaNew->cantidad = 0;
-        $piezaNew->save();
-
+      
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos.');
     }

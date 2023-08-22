@@ -39,7 +39,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $piezas1 = P_Entradas::latest()->first();
+        $piezas1 = P_Entradas::all();
         $piezas2 = P_Salidas::latest()->first();
         $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
         $piezasBajoStock = Pieza::where('stock', '<=', 5)
