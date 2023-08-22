@@ -129,7 +129,7 @@ class PiezaController extends Controller
     public function search(Request $request)
     {
         $texto = ($request->get('texto'));
-        $piezas = DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock','devolucion')
+        $piezas = DB::table('piezas')->select('id','codigo','descripcion','entradas','salidas','stock','devolucion','piezas_minimas')
             ->where('descripcion','LIKE','%'.$texto.'%')
             ->orderBy('id','asc')
             ->paginate(50);
