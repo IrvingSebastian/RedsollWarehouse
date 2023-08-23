@@ -21,7 +21,11 @@
                                     <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
                                         <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
                                     </a>
-                                @endif                            
+
+                                    <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
+                                        <i class="fa fa-fw fa-plus"></i> Agregar archivo XML
+                                    </a>  
+                                @endif              
                                 <form class="mt-2" action="{{route('piezas.search')}}" method="get">
                                     @csrf
                                     <input type="search" class="form-control-sm" placeholder="Buscar" name="texto" style="font-size: small" 
