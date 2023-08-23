@@ -55,7 +55,7 @@ class HomeController extends Controller
 
         $admins2 = User::all();
 
-        $instalers = P_Salidas::all();
+        $instalers = User::all();
 
         return view('home2', compact('admins', 'admins2', 'instalers'));
     }

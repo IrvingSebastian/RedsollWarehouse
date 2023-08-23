@@ -72,7 +72,7 @@
                                         <tr>                                   
                                             @if (Auth::user()->rol == "Instalador")
                                                 <td>
-                                                    <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}"
+                                                    <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}" onchange="selecter()"
                                                     @if ($pieza->stock <= 0)
                                                         disabled  
                                                     @endif
@@ -149,8 +149,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('/js/cantidad.js')}}" async></script>
-
     <script async>
         let selectedItems = [];
 
@@ -168,6 +166,22 @@
                 }
             });
         });
+
+        function selecter(){
+            $('input[name="piezas[]"]').change(function() {
+                var checkboxId = $(this).attr('id');
+                var inputId = checkboxId.replace('checkbox', 'typeNumber');
+                var input = $('#' + inputId);
+
+                if(this.checked) {
+                    input.removeAttr('disabled');
+                    input.attr('name', inputId);
+                } else {
+                    input.attr('disabled', true);
+                    input.removeAttr('name');
+                }
+            });
+        }
 
         function añadirselec() {
             if (selectedItems.length === 0) {
