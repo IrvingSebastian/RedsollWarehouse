@@ -35,7 +35,7 @@
                         @else
                             <div class="card">
                                 <div class="card-header">
-                                    {{$admin->user->name}}
+                                    {{$admin->name}}
                                     <table class="table table-striped table-hover" style="font-size: small">
                                         <thead class="thead">
                                             <tr>
@@ -48,21 +48,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>{{$admin->pieza->id}}</td>
-                                                <td>{{$admin->pieza->codigo}}</td>
-                                                <td>{{$admin->pieza->descripcion}}</td>
-                                                <td>{{$admin->pieza->entradas}}</td>
-                                                <td>{{$admin->pieza->updated_at}}</td>
-                                                <td>
-                                                    <form action="{{ route('piezas.destroy', $admin->pieza->id) }}" method="POST">
-                                                        <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$admin->pieza->id) }}">
-                                                            <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>       
-                                                </td>
-                                            </tr>
+                                            @foreach ($admin->entradas as $entrada)
+                                                <tr>
+                                                    <td>{{$entrada->pieza->id}}</td>
+                                                    <td>{{$entrada->pieza->codigo}}</td>
+                                                    <td>{{$entrada->pieza->descripcion}}</td>
+                                                    <td>{{$entrada->pieza->entradas}}</td>
+                                                    <td>{{$entrada->pieza->updated_at}}</td>
+                                                    <td>
+                                                        <form action="{{ route('piezas.destroy', $entrada->pieza->id) }}" method="POST">
+                                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$entrada->pieza->id) }}">
+                                                                <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>       
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

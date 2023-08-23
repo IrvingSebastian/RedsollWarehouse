@@ -36,12 +36,12 @@ class Pieza extends Model
      */
     protected $fillable = ['codigo','descripcion','entradas','salidas','stock', 'devolucion'];
 
-    public function entradas()
+    public function entradas1()
     {
         return $this->hasMany(P_Entradas::class, 'id_pieza', 'id');
     }
 
-    public function salidas()
+    public function salidas1()
     {
         return $this->hasMany(P_Salidas::class, 'id_pieza', 'id');
     }

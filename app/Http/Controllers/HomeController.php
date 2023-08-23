@@ -51,7 +51,7 @@ class HomeController extends Controller
 
     public function home2()
     {
-        $admins = P_Entradas::all();
+        $admins = User::all();
 
         $admins2 = User::all();
 
