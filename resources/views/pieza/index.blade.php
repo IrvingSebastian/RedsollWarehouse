@@ -76,7 +76,7 @@
                                         <tr>                                   
                                             @if (Auth::user()->rol == "Instalador")
                                                 <td>
-                                                    <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}" onchange="selecter()"
+                                                    <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}" onchange="selecter.call(this)"
                                                     @if ($pieza->stock <= 0)
                                                         disabled  
                                                     @endif
@@ -172,19 +172,18 @@
         });
 
         function selecter(){
-            $('input[name="piezas[]"]').change(function() {
-                var checkboxId = $(this).attr('id');
-                var inputId = checkboxId.replace('checkbox', 'typeNumber');
-                var input = $('#' + inputId);
+            var checkbox = this
+            var checkboxId = checkbox.id
+            var inputId = checkboxId.replace('checkbox', 'typeNumber')
+            var input = document.getElementById(inputId)
 
-                if(this.checked) {
-                    input.removeAttr('disabled');
-                    input.attr('name', inputId);
-                } else {
-                    input.attr('disabled', true);
-                    input.removeAttr('name');
-                }
-            });
+            if (checkbox.checked) {
+                input.removeAttribute('disabled');
+                input.setAttribute('name', inputId);
+            } else {
+                input.setAttribute('disabled', true);
+                input.removeAttribute('name');
+            }
         }
 
         function añadirselec() {

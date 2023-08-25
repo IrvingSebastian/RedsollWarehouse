@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                Administradores que editaron piezas
+                Administradores que añadieron piezas
                 @if($admins == null)
                     <div class="card">
                         <div class="card-header">
@@ -43,7 +43,7 @@
                                                 <th>Codigo</th>
                                                 <th>Descripcion</th>
                                                 <th>Entradas</th>
-                                                <th>Fecha de Modificación</th>
+                                                <th>Fecha de Entrada</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -97,7 +97,7 @@
                                                 <th>Codigo</th>
                                                 <th>Descripcion</th>
                                                 <th>Devolucion</th>
-                                                <th>Fecha de Modificación</th>
+                                                <th>Fecha de Devolución</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -150,7 +150,7 @@
                                                 <th>Codigo</th>
                                                 <th>Descripcion</th>
                                                 <th>Salidas</th>
-                                                <th>Fecha de Actualización</th>
+                                                <th>Fecha de Salida</th>
                                                 <th></th>
                                             </tr>
                                         </thead>

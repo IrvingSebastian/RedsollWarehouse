@@ -41,7 +41,7 @@
       </div>
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
-         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+         <a href="javascript:void(0)" class="closebtn" id="closeBtn">×</a>
          @auth
             @if (Auth::user()->rol == "Jefe de Almacen")
                <a 
@@ -112,7 +112,7 @@
                                  <a class="login">                               
                                        {{ Auth::user()->rol }} - {{ Auth::user()->name }}                                                     
                                  </a>
-                                 <a style="cursor: pointer" class="login" onclick="openNav()">
+                                 <a style="cursor: pointer" class="login" id="openBtn">
                                     <img src="{{asset('images/menu_icon.png')}}" alt="#" />
                                  </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -160,21 +160,9 @@
       </div>
    </footer>
       <!-- end footer -->
-      <!-- Javascript files-->
-      <script src="{{ asset('js/jquery.min.js') }}" async></script>
-      <script src="{{ asset('js/jquery-3.0.0.min.js') }}" async></script>
       <!-- sidebar -->
-      <script src=" {{ asset('js/custom.js') }}" async></script>
+      <script src="{{ asset('js/custom.js') }}" async></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous" async></script>
-      <script async>
-         function openNav() {
-            document.getElementById("mySidepanel").style.width = "250px";
-         }
-         
-         function closeNav() {
-            document.getElementById("mySidepanel").style.width = "0";
-         }
-      </script>
       @yield('scripts')
    </body>
 </html>
