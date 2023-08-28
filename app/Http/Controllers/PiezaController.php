@@ -32,7 +32,7 @@ class PiezaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() 
     {
         $pieza = new Pieza();
         return view('pieza.create', compact('pieza'));

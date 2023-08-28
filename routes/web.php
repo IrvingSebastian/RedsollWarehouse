@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PiezaController;
 use App\Http\Controllers\ImpresionController;
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,5 @@ Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.bo
 Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('selector.borrar1')->middleware('instaler');
 Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('instaler');
 
-
+Route::get('/export', [ExportController::class, 'exportar'])->name('selector.exportar')->middleware('boss');
+Route::get('/export', [ExportController::class, 'export'])->name('selector.export')->middleware('export');
