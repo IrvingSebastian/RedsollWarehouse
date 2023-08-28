@@ -12,6 +12,7 @@ class ExportController extends Controller
     {
         return view('export');
     }
+    
     public function export(){
         
     }

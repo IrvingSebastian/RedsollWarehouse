@@ -19,6 +19,12 @@
 
 @if (Auth::user()->rol == "Jefe de Almacen")
     <div class="container">
+        <div>
+            <a class="btn btn-success btn-sm" style="font-size: small">
+                <i class="fa fa-fw fa-print"></i> Imprimir Reporte</a>
+        </div>
+        <br>
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 Administradores que añadieron piezas
@@ -50,11 +56,11 @@
                                         <tbody>
                                             @foreach ($admin->entradas as $entrada)
                                                 <tr>
-                                                    <td>{{$entrada->pieza->id}}</td>
+                                                    <td>{{$entrada->id_pieza}}</td>
                                                     <td>{{$entrada->pieza->codigo}}</td>
                                                     <td>{{$entrada->pieza->descripcion}}</td>
-                                                    <td>{{$entrada->pieza->entradas}}</td>
-                                                    <td>{{$entrada->pieza->updated_at}}</td>
+                                                    <td>{{$entrada->cantidad}}</td>
+                                                    <td>{{$entrada->updated_at}}</td>
                                                     <td>
                                                         <form action="{{ route('piezas.destroy', $entrada->pieza->id) }}" method="POST">
                                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$entrada->pieza->id) }}">
@@ -104,11 +110,11 @@
                                         <tbody>
                                                 @foreach ($admin->devoluciones as $devolucion)
                                                 <tr>
-                                                    <td>{{ $devolucion->pieza->id }}</td>
+                                                    <td>{{ $devolucion->id_pieza }}</td>
                                                     <td>{{ $devolucion->pieza->codigo }}</td>
                                                     <td>{{ $devolucion->pieza->descripcion }}</td>
-                                                    <td>{{ $devolucion->pieza->devolucion }}</td>
-                                                    <td>{{ $devolucion->pieza->updated_at }}</td>
+                                                    <td>{{ $devolucion->cantidad }}</td>
+                                                    <td>{{ $devolucion->updated_at }}</td>
                                                     <td>
                                                         <form action="{{ route('piezas.destroy', $devolucion->pieza->id ) }}" method="POST">
                                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$devolucion->pieza->id ) }}">
@@ -157,11 +163,11 @@
                                         <tbody>
                                             @foreach ($instaler->salidas as $salida)
                                                 <tr>
+                                                    <td>{{$salida->id_pieza}}</td>
                                                     <td>{{$salida->pieza->codigo}}</td>
-                                                    <td>{{$salida->pieza->id}}</td>
                                                     <td>{{$salida->pieza->descripcion}}</td>
-                                                    <td>{{$salida->pieza->salidas}}</td>
-                                                    <td>{{$salida->pieza->updated_at}}</td>
+                                                    <td>{{$salida->cantidad}}</td>
+                                                    <td>{{$salida->updated_at}}</td>
                                                     <td>
                                                         <form action="{{ route('piezas.destroy', $salida->pieza->id) }}" method="POST">
                                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$salida->pieza->id) }}">

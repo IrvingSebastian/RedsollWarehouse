@@ -41,12 +41,13 @@ class HomeController extends Controller
     {
         $piezas1 = P_Entradas::all();
         $piezas2 = P_Salidas::all();
+        $piezas3 = P_Devoluciones::all();
         $piezasAgotadas = Pieza::where('stock', '<=', 0)->get();
         $piezasBajoStock = Pieza::where('stock', '<=', 5)
             ->where('stock', '>', 0)
             ->get();
 
-        return view('home', compact('piezas1', 'piezas2', 'piezasAgotadas', 'piezasBajoStock'));
+        return view('home', compact('piezas1', 'piezas2', 'piezas3', 'piezasAgotadas', 'piezasBajoStock'));
     }
 
     public function home2()

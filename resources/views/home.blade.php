@@ -20,7 +20,7 @@
 @if (Auth::user()->rol == "Administrador")
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12">        
                 <div class="card">
                     <div class="card-header">
                         Últimas piezas que entraron
@@ -31,8 +31,6 @@
                                     <th>Codigo</th>
                                     <th>Descripcion</th>
                                     <th>Entradas</th>
-                                    <th>Salidas</th>
-                                    <th>Stock</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -44,8 +42,6 @@
                                     <td>{{ $pieza1->pieza->codigo }}</td>
                                     <td>{{ $pieza1->pieza->descripcion }}</td>
                                     <td>{{ $pieza1->pieza->entradas }}</td>
-                                    <td>{{ $pieza1->pieza->salidas }}</td>
-                                    <td>{{ $pieza1->pieza->stock }}</td>
                                     <td>
                                         <form action="{{ route('piezas.destroy', $pieza1->pieza->id) }}" method="POST">
                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza1->pieza->id) }}">
@@ -72,6 +68,7 @@
                     </div>
                 </div>
                 <br>
+                
                 <div class="card">
                     <div class="card-header">
                         Últimas piezas que salieron
@@ -81,9 +78,7 @@
                                     <th>ID Pieza</th>
                                     <th>Codigo</th>
                                     <th>Descripcion</th>
-                                    <th>Entradas</th>
                                     <th>Salidas</th>
-                                    <th>Stock</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -94,9 +89,7 @@
                                     <td>{{ $pieza2->pieza->id }}</td>
                                     <td>{{ $pieza2->pieza->codigo }}</td>
                                     <td>{{ $pieza2->pieza->descripcion }}</td>
-                                    <td>{{ $pieza2->pieza->entradas }}</td>
                                     <td>{{ $pieza2->pieza->salidas }}</td>
-                                    <td>{{ $pieza2->pieza->stock }}</td>
                                     <td>
                                         <form action="{{ route('piezas.destroy', $pieza2->id) }}" method="POST">
                                             <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza2->pieza->id) }}">
@@ -123,6 +116,56 @@
                     </div>
                 </div>
                 <br>
+                
+                <div class="card">
+                    <div class="card-header">
+                        Últimas piezas que fueron devueltas
+                        <table class="table table-striped table-hover" style="font-size: small">
+                            <thead class="thead">
+                                <tr>
+                                    <th>ID Pieza</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Devolucion</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($piezas2 != null)
+                                @foreach ($piezas3 as $pieza3 )
+                                <tr>
+                                    <td>{{ $pieza3->pieza->id }}</td>
+                                    <td>{{ $pieza3->pieza->codigo }}</td>
+                                    <td>{{ $pieza3->pieza->descripcion }}</td>
+                                    <td>{{ $pieza3->pieza->devolucion }}</td>
+                                    <td>
+                                        <form action="{{ route('piezas.destroy', $pieza2->id) }}" method="POST">
+                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza2->pieza->id) }}">
+                                                <i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza2->pieza->id) }}">
+                                                <i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza2->pieza->id) }}">
+                                                <i class="fa fa-fw fa-edit"></i> Devolver</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" style="font-size: small">
+                                                <i class="fa fa-fw fa-trash-o"></i> Eliminar</button>
+                                        </form>       
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="7">No hay piezas</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+
+
                 <div class="card">
                     <div class="card-header">
                         Piezas agotadas
