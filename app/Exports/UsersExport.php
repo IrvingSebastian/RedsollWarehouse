@@ -2,22 +2,22 @@
 
 namespace App\Exports;
 
-use App\Models\Pieza;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class UsersExport implements FromCollection,WithHeadings
+class UsersExport implements WithMultipleSheets
 {
-    /*
-    *@return \Illuminate\Support\Collection
-    */
+    use Exportable;
 
-    public function headings(): array{
-        return ['id','codigo','descripcion',];
-    }
-    
-    public function collection(){
-        $piezas = Pieza::select('id','codigo','descripcion')->get();
-        return $piezas;
+    //Función que retorna un array de hojas de cálculo
+    public function sheets(): array
+    {
+        $sheets = []; //Array de hojas de cálculo
+
+        $sheets[] = new DevolucionExport(); //Añadir hoja de cálculo de devoluciones
+        
+        //Añadir aqui el resto de hojas de cálculo
+
+        return $sheets; //Retornar array de hojas de cálculo
     }
 }
