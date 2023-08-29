@@ -20,7 +20,7 @@
 @if (Auth::user()->rol == "Jefe de Almacen")
     <div class="container">
         <div>
-            <a class="btn btn-success btn-sm" style="font-size: small">
+            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('exportar') }}">
                 <i class="fa fa-fw fa-print"></i> Imprimir Reporte</a>
         </div>
         <br>

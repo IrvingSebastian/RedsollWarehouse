@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PiezaController;
 use App\Http\Controllers\ImpresionController;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\ExportController;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +47,4 @@ Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('sel
 
 //Route::get('/export', [ExportController::class, 'exportar'])->name('selector.exportar')->middleware('boss');
 //Route::get('/export', [ExportController::class, 'export'])->name('selector.export')->middleware('export');
-Route::get('/exportar', 'HomeController@export');
+Route::get('/exportar', [ExportController::class, 'export'])->name('exportar')->middleware('boss');

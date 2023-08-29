@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\P_Salidas;
 use App\Models\Pieza;
-use App\Models\PiezaNew;
 use Illuminate\Http\Request;
 
 class ImpresionController extends Controller
