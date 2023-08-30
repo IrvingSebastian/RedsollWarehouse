@@ -48,3 +48,5 @@ Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('sel
 //Route::get('/export', [ExportController::class, 'exportar'])->name('selector.exportar')->middleware('boss');
 //Route::get('/export', [ExportController::class, 'export'])->name('selector.export')->middleware('export');
 Route::get('/exportar', [ExportController::class, 'export'])->name('exportar')->middleware('boss');
+
+Route::post('procesar-xml', 'PiezaController@procesarXML')->name('procesar.xml');

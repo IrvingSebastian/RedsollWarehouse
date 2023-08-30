@@ -139,12 +139,12 @@
                                     <td>{{ $pieza3->pieza->descripcion }}</td>
                                     <td>{{ $pieza3->pieza->devolucion }}</td>
                                     <td>
-                                        <form action="{{ route('piezas.destroy', $pieza2->id) }}" method="POST">
-                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza2->pieza->id) }}">
+                                        <form action="{{ route('piezas.destroy', $pieza3->id) }}" method="POST">
+                                            <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza3->pieza->id) }}">
                                                 <i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza2->pieza->id) }}">
+                                            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza3->pieza->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Editar</a>
-                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza2->pieza->id) }}">
+                                            <a class="btn btn-info btn-sm" style="font-size: small" href="{{ route('piezas.devolucion',$pieza3->pieza->id) }}">
                                                 <i class="fa fa-fw fa-edit"></i> Devolver</a>
                                             @csrf
                                             @method('DELETE')

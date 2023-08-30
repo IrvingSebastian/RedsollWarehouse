@@ -7,6 +7,8 @@ use App\Models\Pieza;
 use App\Models\P_Entradas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use SimpleXMLElement;
 
 /**
  * Class PiezaController
@@ -167,5 +169,51 @@ class PiezaController extends Controller
 
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos de la pieza devuelta.');
+    }
+
+    public function procesarXML(Request $request)
+    {
+        if ($request->hasFile('xmlFile')) {
+            $xmlFile = $request->file('xmlFile');
+
+            $xml = new SimpleXMLElement(file_get_contents($xmlFile->getRealPath()));
+
+            foreach ($xml->Concepto as $concepto) {
+                $codigo = (string) $concepto['ClaveProdServ'];
+                $descripcion = (string) $concepto['Descripcion'];
+                $cantidad = (float) $concepto['Cantidad'];
+
+                // Verificar si la pieza ya existe por el código
+                $pieza = Pieza::where('codigo', $codigo)->first();
+                if (!$pieza) {
+                    // Si no existe, crea una nueva
+                    $pieza = new Pieza();
+                    $pieza->codigo = $codigo;
+                }
+
+                $pieza->descripcion = $descripcion;
+
+                // Lógica de entradas y stock
+                if ($pieza->exists) {
+                    // Si la pieza ya existe, actualiza el stock y las entradas
+                    $stockAnterior = $pieza->stock;
+                    $entradasAnteriores = $pieza->entradas;
+
+                    // Calcula el nuevo stock y las nuevas entradas
+                    $nuevoStock = $stockAnterior + $cantidad;
+                    $nuevasEntradas = $entradasAnteriores + $cantidad;
+
+                    $pieza->stock = $nuevoStock;
+                    $pieza->entradas = $nuevasEntradas;
+                } else {
+                    // Si la pieza es nueva, inicializa el stock y las entradas
+                    $pieza->stock = $cantidad;
+                    $pieza->entradas = $cantidad;
+                }
+                $pieza->save();
+            }
+            return redirect()->back()->with('success', 'XML procesado correctamente.');
+        }
+        return redirect()->back()->with('error', 'No se ha proporcionado un archivo XML.');
     }
 }

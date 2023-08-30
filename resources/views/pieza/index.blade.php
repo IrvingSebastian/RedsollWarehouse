@@ -22,9 +22,11 @@
                                         <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
                                     </a>
 
-                                    <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
-                                        <i class="fa fa-fw fa-plus"></i> Agregar archivo XML
-                                    </a>  
+                                    <form action="{{ route('procesar.xml') }}" method="POST" enctype="multipart/form-data" style="font-size: small"> 
+                                        @csrf
+                                        <input type="file" name="xmlFile" style="font-size: small">
+                                        <button type="submit">Agregar Archivo XML</button>
+                                    </form>
                                 @endif              
                                 <form class="mt-2" action="{{route('piezas.search')}}" method="get">
                                     @csrf
