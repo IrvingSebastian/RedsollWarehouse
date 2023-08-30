@@ -21,11 +21,14 @@
                                     <a href="{{ route('piezas.create') }}" class="btn btn-primary btn-sm" style="font-size: small">
                                         <i class="fa fa-fw fa-plus"></i> Crear nueva pieza
                                     </a>
-
-                                    <form action="{{ route('procesar.xml') }}" method="POST" enctype="multipart/form-data" style="font-size: small"> 
+                                    <form action="{{ route('procesar.xml') }}" method="POST" enctype="multipart/form-data" style="font-size: small" class="form-control-sm"> 
                                         @csrf
-                                        <input type="file" name="xmlFile" style="font-size: small">
-                                        <button type="submit">Agregar Archivo XML</button>
+                                        <div class="input-group mb-3">
+                                            <input type="file" name="xmlFile" style="font-size: small" class="form-control">
+                                            <button type="submit" class="btn btn-success btn-sm" for="xmlFile" style="font-size: small">
+                                                <i class="fa fa-fw fa-upload"></i> Agregar Archivo XML
+                                            </button>
+                                        </div>                                        
                                     </form>
                                 @endif              
                                 <form class="mt-2" action="{{route('piezas.search')}}" method="get">
