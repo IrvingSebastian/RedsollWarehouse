@@ -15,12 +15,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             // Código para borrar los datos de la tabla P_Entradas
-            DB::table('P_Entradas')->truncate();
+            DB::table('p__entradas')->truncate();
             // Código para borrar los datos de la tabla P_Salidas
-            DB::table('P_Salidas')->truncate(); 
+            DB::table('p__salidas')->truncate(); 
             // Código para borrar los datos de la tabla P_Devoluciones
-            DB::table('P_Devoluciones')->truncate();
-        })->weekly()->mondays()->at('11:59');
+            DB::table('p__devoluciones')->truncate();
+        })->weekly()->sundays()->at('23:59');
     }
 
     /**
