@@ -37,6 +37,7 @@ class ImportController extends Controller
                     // Si la pieza ya existe, actualiza el stock y las entradas
                     $pieza->stock = $pieza->stock + $cantidad;
                     $pieza->entradas = $cantidad;
+                    $pieza->save();
 
                     // Crea un registro de entrada en P_Entradas
                     $piezaNew = new P_Entradas();
@@ -49,6 +50,7 @@ class ImportController extends Controller
                     // Si la pieza es nueva, inicializa el stock y las entradas
                     $pieza->stock = $cantidad;
                     $pieza->entradas = $cantidad;
+                    $pieza->save();
 
                     // Crea un registro de entrada en P_Entradas
                     $piezaNew = new P_Entradas();
@@ -57,7 +59,6 @@ class ImportController extends Controller
                     $piezaNew->cantidad = $cantidad;
                     $piezaNew->save();
                 }
-                $pieza->save(); // Guarda los cambios en la base de datos
             }
 
             // Redirecciona a la página anterior con un mensaje de éxito

@@ -48,7 +48,15 @@ class PiezaController extends Controller
     {
         request()->validate(Pieza::$rules);
 
-        $pieza = Pieza::create($request->all());
+        //Crear pieza nueva
+        $pieza = new Pieza();
+        $pieza->codigo = $request->get('codigo');
+        $pieza->descripcion = $request->get('descripcion');
+        $pieza->entradas = $request->get('entradas');
+        $pieza->stock = $request->get('entradas');
+        $pieza->save();
+
+        //Crear registro de entrada
         $piezaNew = new P_Entradas();
         $piezaNew->id_pieza = $pieza->id;
         $piezaNew->id_user = Auth()->user()->id;

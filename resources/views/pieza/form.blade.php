@@ -18,9 +18,15 @@
             {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('entradas: ingrese un valor y será sumado al anterior, escriba 0 si no desea modificar nada') }}
-            {{ Form::number('entradas', '', ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => $pieza->entradas, 'required']) }}
-            {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
+            @if(Request::is('piezas/create'))
+                {{ Form::label('entradas') }}
+                {{ Form::number('entradas', $pieza->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => 'Entradas', 'required']) }}
+                {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
+            @else
+                {{ Form::label('entradas: ingrese un valor y será sumado al anterior, escriba 0 si no desea modificar nada') }}
+                {{ Form::number('entradas', '', ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => $pieza->entradas, 'required']) }}
+                {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
+            @endif       
         </div>       
         @endif      
     <br>
