@@ -15,12 +15,12 @@ class EntradaExport implements FromCollection, WithHeadings
     {
         // Escribir aqui la lógica para obtener las entradas
           // Obtener todas las devoluciones
-          $Entradas = P_Entrada::with('pieza:id,codigo,descripcion')
+          $entradas = P_Entradas::with('pieza:id,codigo,descripcion')
           ->select('id_pieza', 'cantidad', 'created_at')
           ->get();
 
       // Formatear la colección para que se muestren los datos que se desean
-      $formattedDevoluciones = $devoluciones->map(function ($devolucion) {
+      $formattedDevoluciones = $entradas->map(function ($devolucion) {
           return [
               'id_pieza' => $devolucion->id_pieza, // Acceder al atributo 'id_pieza
               'codigo_pieza' => $devolucion->pieza->codigo, // Acceder al atributo 'codigo' de la relación 'pieza'

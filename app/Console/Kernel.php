@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +13,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            // Código para borrar los datos de la tabla P_Entradas
+            DB::table('P_Entradas')->truncate();
+            // Código para borrar los datos de la tabla P_Salidas
+            DB::table('P_Salidas')->truncate(); 
+            // Código para borrar los datos de la tabla P_Devoluciones
+            DB::table('P_Devoluciones')->truncate();
+        })->weekly()->mondays()->at('11:59');
     }
 
     /**
