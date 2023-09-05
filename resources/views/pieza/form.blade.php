@@ -18,23 +18,10 @@
             {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('entradas') }}
-            {{ Form::number('entradas', $pieza->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => 'Entradas', 'required']) }}
+            {{ Form::label('entradas: ingrese un valor y será sumado al anterior, escriba 0 si no desea modificar nada') }}
+            {{ Form::number('entradas', '', ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => $pieza->entradas, 'required']) }}
             {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
-            <input type="number" class="form-control" id="suma" name = "suma" placeholder="Ingrese un número">
-<a href = "{{ route('piezas.suma', $pieza->id) }}" class="btn btn-success btn-sm" style="font-size: small">
-    <i class="fa fa-fw fa-edit"></i>Agregar número</a>
-        </div>
-        <div class="form-group">
-            {{ Form::label('salidas') }}
-            {{ Form::text('salidas', $pieza->salidas, ['class' => 'form-control' . ($errors->has('salidas') ? ' is-invalid' : ''), 'placeholder' => 'Salidas', 'required']) }}
-            {!! $errors->first('salidas', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('stock') }}
-            {{ Form::text('stock', $pieza->stock, ['class' => 'form-control' . ($errors->has('stock') ? ' is-invalid' : ''), 'placeholder' => 'Stock', 'required']) }}
-            {!! $errors->first('stock', '<div class="invalid-feedback">:message</div>') !!}
-        </div>            
+        </div>       
         @endif      
     <br>
     <div class="box-footer mt20">

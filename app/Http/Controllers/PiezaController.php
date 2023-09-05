@@ -95,8 +95,23 @@ class PiezaController extends Controller
     {
         request()->validate(Pieza::$rules);
 
-        $pieza->update($request->all());
-      
+        if($request->get('entradas') > 0){
+            $newcode = $request->get('codigo'); 
+            $newdesc = $request->get('descripcion');
+            $newentra = $request->get('entradas');
+
+            $pieza->codigo = $newcode;
+            $pieza->descripcion = $newdesc;
+
+            //Actualizar las entradas y el stock
+            $pieza->entradas += $newentra;
+            $pieza->stock += $newentra;
+
+            //Guardar los datos
+            $pieza->save();
+        }
+
+        //Devolver mensaje de éxito
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos.');
     }
@@ -166,13 +181,5 @@ class PiezaController extends Controller
 
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos de la pieza devuelta.');
-    }
-    public function suma(Request $request, $id){
-        $pieza = Pieza:: find($id);
-        $sum = ($request->get('suma'));
-       
-        $pieza->stock += $sum;
-        $pieza->entradas = $sum;
-        $pieza->save();
     }
 }

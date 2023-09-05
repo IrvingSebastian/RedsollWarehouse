@@ -41,7 +41,6 @@ Route::resource('piezas', PiezaController::class)->middleware('auth');
 Route::get('/search', [PiezaController::class, 'search'])->name('piezas.search')->middleware('auth');
 Route::get('/devolucion/{id}' , [PiezaController::class, 'devolucion'])->name('piezas.devolucion')->middleware('auth');
 Route::patch('/devolver/{id}' , [PiezaController::class, 'devolver'])->name('piezas.devolver')->middleware('auth');
-Route::get('/suma/{id}' , [PiezaController::class, 'suma'])->name('piezas.suma')->middleware('auth');
 
 //Rutas de impresión en PDF
 Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('instaler');

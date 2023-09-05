@@ -63,7 +63,7 @@
                                         @if (Auth::user()->rol == "Instalador")
                                             <th></th>
                                         @endif
-                                        <th>ID Pieza</th>
+                                        <th>ID</th>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
                                         <th>Entradas</th>

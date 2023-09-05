@@ -23,8 +23,6 @@ class Pieza extends Model
       'codigo' => 'required',
       'descripcion' => 'required',
       'entradas' => 'required',
-      'salidas' => 'required',
-      'stock' => 'required',
     ];
 
     protected $perPage = 20;
