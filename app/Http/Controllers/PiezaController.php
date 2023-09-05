@@ -110,7 +110,17 @@ class PiezaController extends Controller
             //Guardar los datos
             $pieza->save();
         }
+        else if($request->get('entradas') == 0){
+            $newcode = $request->get('codigo'); 
+            $newdesc = $request->get('descripcion');
+            
 
+            $pieza->codigo = $newcode;
+            $pieza->descripcion = $newdesc;
+
+            //Guardar los datos
+            $pieza->save();
+        }
         //Devolver mensaje de éxito
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos.');
