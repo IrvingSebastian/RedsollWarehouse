@@ -32,6 +32,8 @@
                         <div class="form-group">
                             <strong>Entradas:</strong>
                             {{ $pieza->entradas }}
+                            <i class="fa fa-fw fa-upload"></i>Subir datos</button>
+            <button type="reset" class="btn btn-warning btn-sm" style="font-size: small">
                         </div>
                         <div class="form-group">
                             <strong>Salidas:</strong>

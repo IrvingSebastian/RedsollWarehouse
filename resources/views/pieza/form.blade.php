@@ -19,8 +19,11 @@
         </div>
         <div class="form-group">
             {{ Form::label('entradas') }}
-            {{ Form::text('entradas', $pieza->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => 'Entradas', 'required']) }}
+            {{ Form::number('entradas', $pieza->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), 'placeholder' => 'Entradas', 'required']) }}
             {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
+            <input type="number" class="form-control" id="suma" name = "suma" placeholder="Ingrese un número">
+<a href = "{{ route('piezas.suma', $pieza->id) }}" class="btn btn-success btn-sm" style="font-size: small">
+    <i class="fa fa-fw fa-edit"></i>Agregar número</a>
         </div>
         <div class="form-group">
             {{ Form::label('salidas') }}

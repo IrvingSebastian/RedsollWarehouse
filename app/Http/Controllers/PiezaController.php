@@ -167,4 +167,12 @@ class PiezaController extends Controller
         return redirect()->route('piezas.index')
             ->with('success', 'Se han actualizado los datos de la pieza devuelta.');
     }
+    public function suma(Request $request, $id){
+        $pieza = Pieza:: find($id);
+        $sum = ($request->get('suma'));
+       
+        $pieza->stock += $sum;
+        $pieza->entradas = $sum;
+        $pieza->save();
+    }
 }
