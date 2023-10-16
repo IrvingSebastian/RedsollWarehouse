@@ -54,7 +54,7 @@
             <thead>
                 <tr>
                     <th scope="col">
-                        <img src="{{url('images/logo.png')}}" width="200px" height="75px" alt="logo">                        
+                        <img src="{{url('images/newlogo.png')}}" width="200px" height="75px" alt="logo">                        
                     </th>
                     <th scope="col">Salida de Material</th>
                     <th scope="col">FO-006<br>REV-00</th>
@@ -79,7 +79,7 @@
 
         <br>
         
-        <table class="table table-striped table-dark">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID Pieza</th>
