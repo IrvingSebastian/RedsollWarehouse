@@ -60,7 +60,7 @@
                             <table class="table table-striped table-hover" style="font-size: small">
                                 <thead class="thead">
                                     <tr>
-                                        @if (Auth::user()->rol == "Instalador")
+                                        @if (Auth::user()->rol != "Jefe de Almacen")
                                             <th></th>
                                         @endif
                                         <th>ID</th>
@@ -79,7 +79,7 @@
                                 <tbody>
                                     @foreach ($piezas as $pieza)
                                         <tr>                                   
-                                            @if (Auth::user()->rol == "Instalador")
+                                            @if (Auth::user()->rol != "Jefe de Almacen")
                                                 <td>
                                                     <input class="form-check-input mt-0" type="checkbox" value="{{ $pieza->id }}" name="piezas[]" data-id="{{ $pieza->id }}" id="checkbox-{{ $pieza->id }}" onchange="selecter.call(this)"
                                                     @if ($pieza->stock <= 0)
@@ -100,7 +100,15 @@
                                             @endif
                                             <td>
                                                 @if (Auth::user()->rol == "Administrador")
-                                                <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">
+                                                <form action="{{ route('piezas.destroy', $pieza->id) }}" method="POST">    
+                                                    <div class="form-outline mt-2" style="font-size: small">
+                                                        <input min="1" max="{{$pieza->stock}}" type="number" id="typeNumber-{{ $pieza->id }}" class="form-control" disabled
+                                                        @if ($pieza->stock <= 0)
+                                                            disabled
+                                                        @endif
+                                                        />
+                                                        <label class="form-label" for="typeNumber">En stock {{$pieza->stock}}</label>
+                                                    </div>
                                                     <a class="btn btn-primary btn-sm" style="font-size: small" href="{{ route('piezas.show',$pieza->id) }}">
                                                         <i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('piezas.edit',$pieza->id) }}">
@@ -135,7 +143,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            @if (Auth::user()->rol == "Instalador")
+                            @if (Auth::user()->rol != "Jefe de Almacen")
                             <div style="text-align:right; ">
                                 <button name="selector" class="btn btn-primary btn-sm" style="font-size: small" onclick="añadirselec()">
                                     <i class="fa fa-fw fa-plus"></i> Agregar seleccionados

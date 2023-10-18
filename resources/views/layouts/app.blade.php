@@ -61,7 +61,7 @@
                   class="active"      
             @endif         
             href="{{url('piezas')}}">Consultar Piezas</a>
-            @if (Auth::user()->rol == 'Instalador')
+            @if (Auth::user()->rol != 'Jefe de Almacen')
                <a
                @if (Request::is('visualizar'))
                      class="active"

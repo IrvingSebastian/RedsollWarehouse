@@ -43,11 +43,11 @@ Route::get('/devolucion/{id}' , [PiezaController::class, 'devolucion'])->name('p
 Route::patch('/devolver/{id}' , [PiezaController::class, 'devolver'])->name('piezas.devolver')->middleware('auth');
 
 //Rutas de impresión en PDF
-Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('instaler');
-Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('instaler');
-Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('instaler');
-Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('selector.borrar1')->middleware('instaler');
-Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('instaler');
+Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
+Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth');
+Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth');
+Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('selector.borrar1')->middleware('auth');
+Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('auth');
 
 //Rutas de exportación en Excel
 Route::get('/exportar', [ExportController::class, 'export'])->name('exportar')->middleware('boss');
