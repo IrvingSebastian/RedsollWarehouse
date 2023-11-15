@@ -50,7 +50,7 @@ Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('sele
 Route::get('/visualizar', [ImpresionController::class, 'visualizar'])->name('selector.visualizar')->middleware('auth');
 
 //Rutas de exportación en Excel
-Route::get('/exportar', [ExportController::class, 'export'])->name('exportar')->middleware('boss');
+Route::get('/exportar', [ExportController::class, 'export'])->name('exportar')->middleware('auth');
 
 //Rutas de importación en XML
 Route::post('procesar-xml', [ImportController::class, 'procesarXML'])->name('procesar.xml')->middleware('auth');

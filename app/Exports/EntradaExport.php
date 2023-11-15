@@ -5,8 +5,9 @@ namespace App\Exports;
 use App\Models\P_Entradas;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class EntradaExport implements FromCollection, WithHeadings
+class EntradaExport implements FromCollection, WithHeadings, WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -36,5 +37,10 @@ class EntradaExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return ['ID', 'Codigo', 'Descripcion', 'Cantidad', 'Fecha'];
+    }
+
+    public function title(): string
+    {
+        return "Entradas";
     }
 }

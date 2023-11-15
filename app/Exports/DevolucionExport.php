@@ -36,4 +36,9 @@ class DevolucionExport implements FromCollection, WithHeadings
     {
         return ['ID', 'Codigo', 'Descripcion', 'Cantidad', 'Fecha'];
     }
+
+    public function title(): string
+    {
+        return "Devoluciones";
+    }
 }

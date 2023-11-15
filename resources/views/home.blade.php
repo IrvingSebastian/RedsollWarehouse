@@ -19,6 +19,13 @@
 
 @if (Auth::user()->rol == "Administrador")
     <div class="container">
+        <div>
+            <a class="btn btn-success btn-sm" style="font-size: small" href="{{ route('exportar') }}">
+                <i class="fa fa-fw fa-print"></i> Imprimir Reporte</a>
+        </div>
+    </div>
+    <br>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">        
                 <div class="card">

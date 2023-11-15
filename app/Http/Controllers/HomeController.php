@@ -39,6 +39,7 @@ class HomeController extends Controller
      */
     public function home()
     {
+        //Retornar las Entradas, Salidas y Devoluciones
         $piezas1 = P_Entradas::all();
         $piezas2 = P_Salidas::all();
         $piezas3 = P_Devoluciones::all();
@@ -52,10 +53,9 @@ class HomeController extends Controller
 
     public function home2()
     {
+        // Retornar diversas consultas de la tabla Users para usarlas
         $admins = User::all();
-
         $admins2 = User::all();
-
         $instalers = User::all();
 
         return view('home2', compact('admins', 'admins2', 'instalers'));
