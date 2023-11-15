@@ -5,8 +5,9 @@ namespace App\Exports;
 use App\Models\P_Devoluciones;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class DevolucionExport implements FromCollection, WithHeadings
+class DevolucionExport implements FromCollection, WithHeadings, WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
