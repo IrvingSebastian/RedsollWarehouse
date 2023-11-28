@@ -43,7 +43,7 @@ Route::get('/devolucion/{id}' , [PiezaController::class, 'devolucion'])->name('p
 Route::patch('/devolver/{id}' , [PiezaController::class, 'devolver'])->name('piezas.devolver')->middleware('auth');
 
 //Rutas de impresión en PDF
-Route::post('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
+Route::get('/selector', [ImpresionController::class, 'selector'])->name('selector')->middleware('auth');
 Route::get('/imprimir', [ImpresionController::class, 'imprimir'])->name('selector.imprimir')->middleware('auth');
 Route::get('/borrar', [ImpresionController::class, 'borrar'])->name('selector.borrar')->middleware('auth');
 Route::get('/borrar1/{id}', [ImpresionController::class, 'borrar1'])->name('selector.borrar1')->middleware('auth');
