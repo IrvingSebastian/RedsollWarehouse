@@ -1,5 +1,5 @@
 <p align="center">
-<img src="http://redsollwarehouse.redsoll.com/images/logo2.png" width="300" alt="Redsoll Logo">
+<img src="http://redsollwarehouse.redsoll.com/images/logo2.png](https://www.redsoll.com/redsollwarehouse/public/images/logo.png" width="300" alt="Redsoll Logo">
 
 <h1>Redsoll Warehouse</h1>
 </p>  
@@ -27,8 +27,8 @@
 
 <h2>Equipo de Trabajo</h2>
   <ul>
-    <li><a href="https://github.com/armandolopezg" target="_blank">Neo Magatsu</li></a>
-    <li><a href="https://github.com/FernandoHG07" target="_blank">Neo ByTheAndrew</li></a>
-    <li><a href="https://github.com/Ermandash169">Neo Ermandash</li></a>
-    <li><a href="https://github.com/IrvinGreg51" target="_blank">Neo IrvinGreg51</li></a>
+    <li><a href="https://github.com/armandolopezg" target="_blank">Armando López</li></a>
+    <li><a href="https://github.com/FernandoHG07" target="_blank">Luis Hernández</li></a>
+    <li><a href="https://github.com/Ermandash169">Erick Ramírez</li></a>
+    <li><a href="https://github.com/IrvinGreg51" target="_blank">Irving Sebastián</li></a>
   </ul>
