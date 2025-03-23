@@ -27,8 +27,8 @@
 
 <h2>Equipo de Trabajo</h2>
   <ul>
-    <li><a href="https://github.com/armandolopezg" target="_blank">Armando López</li></a>
-    <li><a href="https://github.com/FernandoHG07" target="_blank">Luis Hernández</li></a>
-    <li><a href="https://github.com/Ermandash169">Erick Ramírez</li></a>
-    <li><a href="https://github.com/IrvinGreg51" target="_blank">Irving Sebastián</li></a>
+    <li>A.</li>
+    <li>L.</li>
+    <li>E.</li>
+    <li>I.</li>
   </ul>
